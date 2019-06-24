@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+
+
+.add_expense_btn
+{
+	position:fixed;
+	top:83%;
+	left:4%;
+	width:0px;
+	height:0px;
+	/*padding:23px;*/
+	font-family:'Open Sans',sans-serif;
+	color:#fff;
+	font-size:2em;
+	border-radius:43%;
+	cursor:pointer;
+}
+
+.container-fluid
+{
+	min-height:100vh;
+	background:url('../../../assets/Images/AuthHome/backdrop.png');
+}
+
+.modal-title
+{
+	font-family:'Raleway', sans-serif;
+	font-size:0.9em;
+}
+
+.modal-body
+{
+	font-family:'Quicksand', sans-serif;
+}
+
+.alert
+{
+	font-size:0.8em;
+}
+
+input
+{
+	font-size:0.8em;
+}
+
+.modal-footer
+{
+	font-family:'Raleway', sans-serif;
+}
+
+.modal-footer button
+{
+	border:1px solid rgba(0,0,0,0.35) !important;
+}
+
+
+@media(max-width:576px)
+{
+	.container
+	{
+		width:90vw;
+	}
+}
+

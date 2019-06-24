@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap');
+
+
+ul
+{
+	margin-top:4vh;
+	padding:20px 0;
+	border-radius:4px;
+	background:#fff;
+	border:1px solid rgba(0,0,0,0.1);
+}
+
+li
+{
+	padding:13px 20px;
+	background:#fff;
+}
+
+li.alt-link-active
+{
+	padding-bottom:6px;
+}
+
+a
+{
+	color:rgba(0,0,0,0.7);
+	text-decoration:none;
+	font-family:'Raleway', sans-serif;
+	font-size:0.9em;
+	cursor:pointer;
+}
+
+.alt-links
+{
+	position:relative;
+	top:7px;
+	left:45px;
+	transition:all 0.5s ease-in;
+	visibility:hidden;
+	opacity:0;
+	height:0;
+}
+
+.alt-links a
+{
+	font-family:'Quicksand', sans-serif;
+}
+
+.alt-links.show
+{
+	visibility: visible;
+	opacity:1;
+	height:auto;
+	display:flex !important;
+	flex-flow:column;
+}
+
+img
+{
+	width:23px;
+	height:23px;
+}
+
+img.arrow
+{
+	width:11px;
+	height:11px;
+	transition:all 0.5s ease-in;
+}
+
+img.arrow.active
+{
+	transform:rotateZ(90deg);
+}

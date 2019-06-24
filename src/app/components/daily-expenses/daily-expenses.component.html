@@ -1,0 +1,37 @@
+
+<div class='row my-2'>
+	
+	<div class='col-12 py-4 px-4 heading'>
+		Daily Expenses
+	</div>
+</div>
+
+<div class='row'>
+	
+	<div class='col-12 px-4 py-4 main'>
+		
+		<form class='form-inline' [formGroup]='dateForm' (ngSubmit)='submit(dateForm)'>
+			
+			<!-- <input [(ngModel)]='model' ngbDatepicker #d='ngbDatepicker' class='form-control form-control-sm mr-3'> -->
+			 <div class="input-group-append">
+		        <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
+		      </div>
+			<button type='submit' class='btn btn-danger btn-sm'>Fetch</button>
+		</form>
+
+		<table class='table table-borderless' *ngIf=''>
+			<thead>
+				<th>Name</th>
+				<th>Amount</th>
+				<th>Time</th>
+			</thead>
+			<tbody>
+				<tr *ngFor='let expense of expenses'>
+					<td>{{ expense.name }}</td>
+					<td>{{ expense.amount }}</td>
+					<td>{{ expense.created_at }}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>

@@ -1,0 +1,60 @@
+<div class='container-fluid pt-4'>
+
+	<app-loader [class.active]='isLoading | async'></app-loader>
+	
+	<div class='row justify-content-around px-0 px-sm-3'>
+		<p class='col-auto mr-auto'>
+			<a routerLink='/' class='brand-name'>Thrift</a>
+		</p>
+
+		<p class='col-auto'>
+			<a routerLink="/login" class='login-button'>Login</a>
+		</p>
+	</div>
+
+	<div class='row justify-content-center'>
+		
+		<div class='col-lg-10 col-xl-8 signup-body px-4 px-lg-0'>
+			
+			<div class='row justify-content-center justify-content-md-start'>
+				
+				<div class='col-md-7 d-none d-md-block main-text'>
+					
+					<p class='title mb-1'>THRIFT</p>
+
+					<p class='definition ml-2'>
+						The quality of using money and other resources carefully
+						and not wastefully
+					</p>
+				</div>
+
+				<div class='col-12 col-sm-8 col-md-5'>
+					
+					<form class='py-4' [formGroup]='signupForm' (ngSubmit)='submit(signupForm)'>
+						
+						<div class='form-group'>
+							<input formControlName='name' type="text" class='form-control' placeholder='Name'>
+							<i class='far fa-user'></i>
+						</div>
+						<div class='form-group'>
+							<input formControlName='email' type="email" class='form-control' placeholder='Email Address'>
+							<i class='far fa-envelope'></i>
+						</div>
+						<div class='form-group mb-4'>
+							<input formControlName='password' type="password" class='form-control' placeholder='Password' (input)='toggleEyeDisplay($event.target.value)' #passwordinput>
+							<i class='fas fa-key'></i>
+							<i class='far fa-eye d-none eye' #eye (click)='togglePasswordDisplay()'></i>
+							<p class='form-text small text-muted mt-2'>* Password must be at least 8 characters long</p>
+						</div>
+						<div class='form-group mb-3'>
+							<button type='submit' class='btn btn-success w-100' [disabled]='signupForm.invalid' #signupbutton>Signup</button>
+						</div>
+						<div class='form-group mb-0 d-flex justify-content-center text-muted'>
+							<p class='login-text form-text'>already have an account?, <a routerLink='/login'>login</a></p>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

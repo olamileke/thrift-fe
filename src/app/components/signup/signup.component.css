@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css?family=Gloria+Hallelujah&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Neucha&display=swap');
+@import url('https://use.fontawesome.com/releases/v5.8.1/css/all.css');
+
+.container-fluid
+{
+	height:100vh;
+	background:url('../../../assets/Images/Signup/stardust.png');
+}
+
+a
+{
+	text-decoration:none;
+}
+
+.brand-name
+{
+	font-family:'Gloria Hallelujah', cursive;
+	font-size:1.6em;
+	color:#fff;
+}
+
+.login-button
+{	
+	position:relative;
+	top:7px;
+	padding:6px 8px;
+	border:1px solid #F9A602;
+	border-radius:4px;
+	font-family:'Quicksand', sans-serif;
+	transition:background 0.5s ease-out;
+	font-size:0.9em;
+	color:#fff;
+}
+
+.login-button:hover
+{
+	background:#F9A602;
+}
+
+.signup-body
+{
+	position:relative;
+	top:10vh;
+}
+
+.main-text
+{
+	padding-top:6vh;
+	color:#fff;
+}
+
+.title
+{
+	font-size:2.3em;
+	font-family:'Neucha',cursive;
+}
+
+.definition
+{
+	line-height:1.7;
+	font-family:'Neucha', cursive;
+	font-size:1.3em;
+}
+
+form
+{
+	position: relative;
+	left:2.5%;
+	width:95%;
+	background:#fff;
+	border-radius:5px;
+	padding-left:15px;
+	padding-right:15px;
+}
+
+.form-group
+{
+	position:relative;
+	margin-bottom:30px;
+}
+
+input
+{
+	font-family:'Raleway',sans-serif;
+	font-size:0.8em;
+}
+
+input:focus
+{
+	border:1px solid #6C757D;
+}
+
+.login-text
+{
+	font-size:0.94em;
+}
+
+.login-text a
+{
+	text-decoration:underline;
+	color:#6C757d;
+}
+
+.far,.fas
+{
+	position:absolute;
+	top:12px;
+	left:10px;
+}
+
+.eye
+{
+	left:91%;
+	cursor:pointer;
+}
+
+input
+{
+	padding-left:35px;
+}
+

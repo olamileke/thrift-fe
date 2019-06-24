@@ -1,0 +1,31 @@
+
+<ul class='list-unstyled'>
+	<li class='d-flex align-items-center'>
+		<img src='assets/images/Sidebar/dashboard.svg' class='mr-3'>
+		 <a routerLink="/dashboard" (click)="toggleTab('dashboard')">Dashboard</a>
+	</li>
+	<li #altlinkparent>
+		<div class='d-flex align-items-center'>
+			<img src='assets/images/Sidebar/spending.svg' class='mr-3'> 
+			<a class='mr-4' (click)='toggleAltLinks()'>View Spending</a>
+			<img src="assets/images/Sidebar/right-arrow.svg" class='arrow' #arrow>
+		</div>
+
+		<div class='alt-links' #altlinks>
+			<a routerLink='/dailyExpenses' (click)="toggleTab('dailyExpenses')" class='mb-1'>Daily</a>
+			<a routerLink='/monthlyExpenses' (click)="toggleTab('monthlyExpenses')">Monthly</a>
+		</div>
+	</li>
+	<li class='d-flex align-items-center'>
+		<img src='assets/images/Sidebar/analysis.svg' class='mr-3'>
+		 <a routerLink="/analysis" (click)="toggleTab('analysis')">Expense Analysis</a>
+	</li>
+	<li class='d-flex align-items-center'>
+		<img src='assets/images/Sidebar/report.svg' class='mr-3'> 
+		<a routerLink="/reports" (click)="toggleTab('reports')">Report Generation</a>
+	</li>
+	<li class='d-flex align-items-center'>
+		<img src='assets/images/Sidebar/history.svg' class='mr-3'> 
+		<a routerLink="/history" (click)="toggleTab('history')">View History</a>
+	</li>
+</ul>

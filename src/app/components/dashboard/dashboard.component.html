@@ -1,0 +1,43 @@
+
+<div class='row mb-4' *ngIf='dataFetched'>
+	
+	<div class='col-12 income-details d-flex flex-wrap pt-4 pb-2 px-4'>
+		
+		<div class='income-parent mr-auto mr-sm-0'>
+			
+			<span class="text-muted small">{{ remIncome }} left of {{ totalIncome }}</span>
+			<div class='loader mt-2'></div>
+			<div class='loaded' [ngStyle]="styles"></div>
+		</div>
+
+		<div class='savings-stmt'>
+			<span class='small text-muted'>SAVINGS TARGET</span>
+			<p class='mb-0' class="save-target">{{ savingsTarget }}</p>
+		</div>
+	</div>
+</div>
+
+<div class='row' *ngIf='dataFetched'>
+	
+	<div class='col-12 purchases pt-4 pb-1 px-4'>
+		
+		<div class='heading col-12 mb-4'>
+			{{ getPurchaseDetails() }}
+		</div>	
+
+		<table class='table table-borderless'>
+			<thead>
+				<th>Name</th>
+				<th>Amount</th>
+				<th>Time</th>
+			</thead>
+			<tbody>
+				<tr *ngFor='let purchase of purchases'>
+					<td>{{ purchase.name }}</td>
+					<td>{{ purchase.amount }}</td>
+					<td>{{ purchase.time_created }}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>

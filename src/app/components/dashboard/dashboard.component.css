@@ -1,0 +1,84 @@
+
+.income-details
+{
+	background:#fff;
+	border:1px solid rgba(0,0,0,0.1);
+	font-family:'Raleway', sans-serif;
+}
+
+.income-parent
+{
+	position:relative;
+	width:300px;
+}
+
+.loader
+{
+	width:100%;
+	height:15px;
+	background:url('../../../assets/Images/AuthHome/backdrop.png');
+	border-radius:3px;
+}
+
+.loaded
+{
+	position:relative;
+	top:-15px;
+	width:0;
+	/*transition:width 0.4s ease-in;*/
+	height:15px;
+	border-radius:3px 0 0 3px;
+	background:#00A86B;
+}
+
+.savings-stmt
+{	
+	position:relative;
+	left:8vw;
+}
+
+.save-target
+{
+	font-size:1.3em;
+	color:rgba(0,0,0,0.95);
+}
+
+
+.purchases
+{
+	background:#fff;
+	border:1px solid rgba(0,0,0,0.1);
+}
+
+.heading
+{
+	font-family:'Quicksand', sans-serif;
+	font-size:0.9em;
+}
+
+thead
+{
+	background:url('../../../assets/Images/AuthHome/backdrop.png');
+}
+
+th
+{
+	font-family:'Raleway', sans-serif;
+	font-size:0.9em;
+}
+
+td
+{
+	font-family:'Quicksand', sans-serif;
+	font-size:0.86em;
+	width:33.3%;
+}
+
+
+@media(max-width:576px)
+{
+	.savings-stmt
+	{
+		left:0;
+	}
+}

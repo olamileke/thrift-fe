@@ -1,0 +1,146 @@
+<div class='container-fluid px-0'>
+	
+	<nav class='navbar navbar-expand navbar-dark px-3 px-sm-5 pt-1 pt-sm-3' #nav>
+		<a routerLink="/" class='navbar-brand mr-auto' #brandName>thrift</a>
+
+		<div class='navtoggle' (click)='toggleNav()'>
+			<span #hamburger></span>
+		</div>
+
+		<div class='navbar-collapse justify-content-end pr-3 sidebar' #sidebar>
+			<ul class='navbar-nav'>
+				<a href="#home" class='nav-item nav-link'>
+					Home
+					<p class='mb-0'></p>
+				</a>
+				<a href="#about" class='nav-item nav-link'>
+					About
+					<p class='mb-0'></p>
+				</a>
+				<a href="#services" class='nav-item nav-link'>
+					Services
+					<p class='mb-0'></p>
+				</a>
+				<a routerLink="/signup" class='nav-item nav-link'>
+					Signup
+					<p class='mb-0'></p>
+				</a>
+				<a routerLink="/login" class='nav-item nav-link'>
+					Login
+					<p class='mb-0'></p>
+				</a>
+			</ul>
+		</div>
+	</nav>
+
+	<div class='landing-page d-flex align-items-center justify-content-start' id='home'>
+		<img src="assets/images/Home/money-backdrop.jpg">
+		<div class='overlay'></div>
+
+		<div class='content d-flex flex-column'>
+			<p class='mb-2 mt-0 mr-0 title'>THRIFT</p>
+			<div class='d-flex align-items-center lead sub-title mb-3'>
+				Track <p class='dot mx-2'></p> Learn <p class='dot mx-2'></p> Save
+			</div>
+			<div class='d-flex buttons'>
+				<a routerLink='/signup' class='mr-2 active'>Signup</a>
+				<a routerLink='/login'>Login</a>
+			</div>
+		</div>
+	</div>
+	<div class='about text-center' id='about'>
+		
+		<h4>What is Thrift?</h4>
+		<p></p>
+
+		<p class='info text-muted'>
+			Thrift is a platform committed to promoting financial maturity in individuals. A lot of poeple find it difficult to keep track of their spending, subsequently finding themselves overspending and blowing their 
+			budgets. Thrift was therefore created, as a tool to keep track of spending and enable savings.It aims to
+			do all the hard work of keeping track of your expenses, helping you achieve your financial goals in the 
+			process.
+		</p>
+
+	</div>
+
+	<div class='services d-flex flex-column' id='services'>
+	
+		<h4 class='text-center'>What can Thrift do for you?</h4>
+
+		<div class='container'>
+
+			<div class='row mt-4'>
+
+				<div class='col-md-4'>		
+				
+					<img src='assets/images/Home/clipboard.png'>
+					<p class='title mt-1 mb-2 text-center'>Record Expenses</p>
+					<p class='text-center text-muted'>Keep qualitative records of your daily spending. Say goodbye to trying <em><b>and failing</b></em> to remember what
+					you spent on a particular day</p>
+				</div>
+
+				<div class='col-md-4'>
+					<img src='assets/images/Home/analysis.png'>
+					<p class='title mt-1 mb-2 text-center'>Analyze your spending</p>
+					<p class='text-center text-muted'>Worried about overspending?, use our analytic tools to examine your spending</p>
+				</div>
+
+				<div class='col-md-4'>
+					<img src='assets/images/Home/report.png'>
+					<p class='title mt-1 mb-2 text-center'>Report Generation</p>
+					<p class='text-center text-muted'>Generate and download spending reports. This can be in the form of a one time monthly report or for 
+					specified periods</p>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<div class='footer'>
+		
+		<div class='container py-5'>
+			
+			<div class='row justify-content-center'>
+				
+				<div class='col-sm-3 d-flex d-sm-block flex-column flex-sm-row align-items-center align-items-sm-start company-info '>
+					<p class='brand mb-2'>Thrift</p>
+					<p class='mb-2'>3, Bisi Ologolo Street, Lekki, Lagos, Nigeria</p>
+					<p class='mb-2'>+2348179868840</p>
+					<p>info@thrift.ng</p>
+				</div>
+				<div class='col-sm-3 alt-links mb-2 mb-sm-0 d-flex flex-column align-items-center'>
+					<p class='heading'>Quick Links</p>
+					<p class='mb-1'>
+						<a href="#home">Home</a>
+					</p>
+					<p class='mb-1'>
+						<a href="#about">About</a>
+					</p>
+					<p class='mb-1'>
+						<a href="#services">Services</a>
+					</p>
+					<p class='mb-1'>
+						<a routerLink="/signup">Signup</a>
+					</p>
+					<p class='mb-1'>
+						<a routerLink="/login">Login</a>
+					</p>
+				</div>
+				<div class='col-sm-3 d-flex d-sm-block flex-column flex-sm-row align-items-center align-items-sm-start social'>
+					<p class='heading'>
+						Connect With Us
+					</p>
+
+					<p class='mb-1'>
+						<a href="">Facebook</a>
+					</p>
+					<p class='mb-1'>
+						<a href="">Twitter</a>
+					</p>
+					<p class='mb-1'>
+						<a href="">Instagram</a>
+					</p>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>

@@ -1,0 +1,57 @@
+
+<div class='container-fluid pt-4'>
+
+	<app-loader [class.active]='isLoading | async'></app-loader>
+
+	<img src='assets/images/Login/image-backdrop.jpg' class='img-fluid'>
+	
+	<div class='overlay'>
+		
+	</div>
+
+	<div class='row justify-content-around w-100 px-0 px-sm-3' style='position:relative; left:15px;'>
+		<p class='col-auto mr-auto'>
+			<a routerLink='/' class='brand-name'>Thrift</a>
+		</p>
+
+		<p class='col-auto'>
+			<a routerLink="/signup" class='signup-button-top'>Signup</a>
+		</p>
+	</div>
+
+	<div class='row justify-content-center w-100 login-body-parent'>
+		
+		<div class='login-body col-md-9 col-xl-6 row no-gutters justify-content-center justify-content-md-start'>
+			<div class='col-12 col-sm-8 col-md-5 form-body px-3 pt-3'>
+
+				<p class='heading'><a routerLink='/' class='text-muted mb-0'>THRIFT</a></p>
+				<p class="mt-0 ml-1 divider"></p>
+
+				<form class='mt-4' [formGroup]='loginForm' (ngSubmit)='submit(loginForm)'>
+					<div class='form-group d-flex flex-column'>
+						<label for='email' class='text-muted'>Email</label>
+						<input formControlName='email' type="email" id='email' class='text-muted'>
+						<!-- <i class='far fa-envelope'></i> -->
+					</div>
+					<div class='form-group d-flex flex-column'>
+						<label for='password' class='text-muted'>Password</label>
+						<input formControlName='password' type="password" id='password' (input)='toggleEyeDisplay($event.target.value)' #passwordinput>
+						<i class='far fa-eye d-none eye' #eye (click)='togglePasswordDisplay()'></i>
+						<!-- <i class='fa fa-key'></i> -->
+					</div>
+					<p class='small form-text text-muted text-right'>
+						<a href="" class='text-secondary'>Forgot Password?</a>
+					</p>
+					<div class='form-group'>
+						<button type='submit' class='login-button mr-3' [disabled]='loginForm.invalid'>Login</button>
+						<a routerLink='/signup' class='signup-button'>Signup</a>
+					</div>
+				</form>
+			</div>
+			<div class='col-md-7 d-none d-md-block transparent-layer'>
+
+			</div>
+		</div>
+	</div>
+
+</div>

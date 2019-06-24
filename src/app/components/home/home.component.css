@@ -1,0 +1,417 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Anaheim&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Nunito&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Gloria+Hallelujah&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap');
+
+a
+{
+	text-decoration:none;
+	color:#fff;
+}
+
+.navbar
+{
+	position:absolute;
+	top:0;
+	left:0;
+	z-index:1;
+	width:100%;
+	transition:all 0.3s ease-in;
+}
+
+.navbar.active
+{
+	position:fixed;
+	top:0;
+	background:rgba(255,255,255,0.87);
+}
+
+.navbar-brand
+{
+	font-family:'Quicksand', sans-serif;
+	font-size:1.4em;
+	z-index:1;
+	transition:all 0.4s ease-in;
+}
+
+.navbar.active .navbar-brand
+{
+	color:#000;
+}
+
+.navtoggle
+{
+	position:relative;
+	cursor:pointer;
+	padding:10px 0;
+	width:25px;
+	z-index:9999;
+}
+
+
+.navtoggle span, .navtoggle span:after, .navtoggle span:before
+{
+	position:absolute;
+	display:none;
+	width:100%;
+	height:2px;
+	background: #fff;
+	transition:all 0.4s ease-in;
+}
+
+.navtoggle span:after,.navtoggle span:before
+{
+	  top:-8px;
+	  left:0;
+	  content: '';
+	  background: #fff;
+}
+
+.navtoggle span:before
+{
+	top:8px;
+}
+
+.navtoggle span.active
+{
+	background:none;
+}
+
+.navtoggle span.active:before
+{
+    top:0;
+    transform:rotate(45deg);
+}
+
+.navtoggle span.active:after
+{
+	top:0;
+    transform:rotate(-45deg);
+}
+
+.nav-link
+{
+	color:#fff !important;
+	font-family:'Raleway', sans-serif;
+	transition:0.3s all solid ease-in;
+}
+
+.navbar.active .nav-link
+{
+	color:RGBA(0,0,0,0.8) !important;
+}
+
+.nav-link p
+{
+	position:relative;
+	top:2px;
+	width:0;
+	margin-top:3px;
+	height:0px;
+	background:#EA3C53;
+	transition:0.3s all ease-out;
+}
+
+.nav-link:hover, .navbar.active .nav-link:hover
+{
+	color:#EA3C53 !important;
+}
+
+.nav-link:hover p
+{
+	height:1px;
+	width:100%;
+}
+
+div.landing-page
+{
+	position:relative;
+	width:100%;
+	height:100vh;
+}
+
+div.landing-page img
+{
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	object-fit: cover;
+}
+
+.overlay
+{
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4));
+}
+
+.content
+{
+	position:relative;
+	top:-12%;
+	left:12%;
+	color:#fff;
+}
+
+.content .title
+{
+	font-size:4.25em;
+	font-family: 'Gloria Hallelujah', cursive;
+}
+
+.content .sub-title
+{
+	position:relative;
+	left:10px;
+	font-family:'Quicksand', sans-serif;
+}
+
+.content .buttons
+{
+	position:relative;
+	left:10px;
+}
+
+.content a
+{
+	padding:5px 8px;
+	border-radius:4px;
+	transition:all 0.2s ease-in;
+}
+
+.content a.active
+{
+	background:#F9A602;
+	border:1px solid #F9a602
+}
+
+
+.dot
+{
+	position:relative;
+	top:8px;
+	width:5px;
+	height:5px;
+	background:#fff;
+	border-radius:50%;
+}
+
+.about
+{
+	padding:40px;
+	background:rgba(0,0,0,0.03);
+	font-family:'Raleway', sans-serif;
+}
+
+h4
+{
+	font-family:'Raleway', sans-serif;
+}
+
+h4 + p
+{
+	position:relative;
+	left:calc((100% - 50px)/2);
+	height:2px;
+	width:50px;
+	background:#EA3C53;
+}
+
+.info
+{
+	position:relative;
+	left:16.5%;
+	line-height: 1.7;
+	width:65%;
+	color:#666666;
+}
+
+.services
+{
+	padding:40px 0;
+	box-sizing: border-box;
+}
+
+
+.services img
+{
+	position:relative;
+	left:calc((100% - 64px)/2);
+}
+
+.services p
+{
+	font-family:'Quicksand', sans-serif;
+}
+
+
+.services .title
+{
+	margin-top:10px !important;
+	font-family:'Nunito', sans-serif !important;
+	font-size:1.05em;
+}
+
+.footer
+{
+	background:url('../../../assets/images/Home/tweed.png');
+	color:#fff;
+}
+
+.company-info p
+{
+	font-family:'Quicksand', sans-serif;
+	color:rgba(255,255,255,0.75);
+}
+
+.brand
+{
+	font-family:'Gloria Hallelujah', sans-serif !important;
+	font-size:1.7em;
+	color:#fff !important;
+}
+
+.footer .heading
+{
+	font-size:1.2em;
+	font-family:'Raleway', sans-serif;
+}
+
+.footer a
+{
+	font-family:'Quicksand', sans-serif;
+	color:rgba(255,255,255,0.75);
+}
+
+.footer a:hover
+{
+	color:#fff;
+}
+
+
+@media(max-width:768px)
+{
+	.media img
+	{
+		position:relative;
+		left:39%;
+	}
+
+	.footer
+	{
+		padding:20px 0;
+	}
+}
+
+@media(max-width:575px)
+{
+	.navbar.active
+	{
+		background:unset;
+	}
+
+	.navbar.active .navbar-brand
+	{
+		color:#fff;
+	}
+
+	.navbar-brand.alt
+	{
+		color:rgba(0,0,0,0.7) !important;
+	}
+
+	.navtoggle span.alt, .navtoggle span.alt:after, .navtoggle span.alt:before
+	{
+		background:rgba(0,0,0,0.7);
+	}
+
+	.navtoggle span.active.alt
+	{
+		background:none;
+	}
+
+	.navbar.active .nav-link
+	{
+		color:#fff !important;
+	}
+
+	.nav-link:hover
+	{
+		color:#fff !important;
+	}
+
+	.nav-link:hover p
+	{
+		height:0;
+		width:0;
+	}
+
+	div.navtoggle span, div.navtoggle span:after, div.navtoggle span:before
+	{
+		display: block;
+	}
+
+	.sidebar
+	{
+		position:fixed;
+		top:0;
+		height:100vh;
+		left:100%;
+		width:40%;
+		background:rgba(0,0,0,0.45);
+		align-items:flex-start !important;
+		transition:all 0.4s ease-in;
+		z-index:10;
+	}
+
+	.sidebar.active
+	{
+		left:60%;
+	}
+
+	.sidebar ul
+	{
+		position:relative;
+		top:15%;
+		flex-flow:column;
+	}
+
+	.info
+	{
+		left:10%;
+		width:80%;
+	}
+}
+
+
+@media(max-width:450px)
+{
+	.content
+	{
+		top:-5%;
+		left:0;
+		align-items: center;
+	}
+
+	.landing-page
+	{
+		justify-content: center !important;
+	}
+
+	.sidebar
+	{
+		width:50%;
+	}
+
+	.sidebar.active
+	{
+		left:50%;
+	}
+}

@@ -3,8 +3,8 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ToastrModule } from 'ngx-toastr';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ToastrModule } from 'ngx-toastr'
+import { NgxMyDatePickerModule } from 'ngx-mydatepicker';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -22,6 +22,9 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { CountdownComponent } from './components/countdown/countdown.component';
 import { MonthlyExpensesComponent } from './components/monthly-expenses/monthly-expenses.component';
 import { DailyExpensesComponent } from './components/daily-expenses/daily-expenses.component';
+import { ReportsComponent } from './components/reports/reports.component';
+import { SinglePeriodComponent } from './components/single-period/single-period.component';
+import { ComparisonComponent } from './components/comparison/comparison.component';
 
 
 @NgModule({
@@ -37,7 +40,10 @@ import { DailyExpensesComponent } from './components/daily-expenses/daily-expens
     DashboardComponent,
     CountdownComponent,
     MonthlyExpensesComponent,
-    DailyExpensesComponent
+    DailyExpensesComponent,
+    ReportsComponent,
+    SinglePeriodComponent,
+    ComparisonComponent
   ],
   imports: [
     BrowserModule,
@@ -45,8 +51,8 @@ import { DailyExpensesComponent } from './components/daily-expenses/daily-expens
     ToastrModule.forRoot(),
     HttpClientModule,
     ReactiveFormsModule,
+    NgxMyDatePickerModule.forRoot(),
     AppRoutingModule,
-    NgbModule
   ],
   providers: [
               LoaderService,

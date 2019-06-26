@@ -10,9 +10,9 @@ import { DashboardService } from '../../services/dashboard.service';
 })
 export class DashboardComponent implements OnInit {
 	
-  totalIncome:string;
-  remIncome:string;
-  savingsTarget:string;
+  totalIncome:number;
+  remIncome:number;
+  savingsTarget:number;
   remPercent:string;
   styles:any={};
   purchases:any={};
@@ -59,15 +59,15 @@ export class DashboardComponent implements OnInit {
 
     console.log(res);
     
-    this.totalIncome='N '+res.data.total_income;
-    this.remIncome='N '+res.data.current_income;
+    this.totalIncome=res.data.total_income;
+    this.remIncome=res.data.current_income;
     this.purchases=res.data.purchases;
 
     // calculating the percentage of income remaining to use in the loader
 
     this.remPercent=String((res.data.current_income/res.data.total_income) * 100)+'%';
     this.styles['width']=this.remPercent;
-    this.savingsTarget='N '+res.data.savings_target
+    this.savingsTarget=res.data.savings_target
   }
 
  

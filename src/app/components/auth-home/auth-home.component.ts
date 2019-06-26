@@ -19,7 +19,7 @@ export class AuthHomeComponent implements OnInit {
 
   isLoading:Subject<boolean>=this.loader.isLoading;
   addExpenseForm:FormGroup;
-  views={dashboard:true, dailyExpenses:false, monthlyExpenses:false};
+  views={dashboard:false, dailyExpenses:false, monthlyExpenses:false, singlePeriod:false, comparison:false, reports:false};
 
   @ViewChild(DashboardComponent) dashboard:DashboardComponent;
 
@@ -117,7 +117,8 @@ export class AuthHomeComponent implements OnInit {
 
       if(this.views.dashboard) {
 
-        this.dashboard.remIncome='N '+ String(parseFloat(this.dashboard.remIncome.split(' ')[1]) - values.amount);
+        this.dashboard.remIncome=this.dashboard.remIncome - values.amount;
+        // this.dashboard.styles['width']=String((/res.data.total_income) * 100)+'%';
       }
   }
 
@@ -132,6 +133,7 @@ export class AuthHomeComponent implements OnInit {
           if(this.dash.currentDetails['data'].purchases[i].name == values.name) {
 
               this.dash.currentDetails['data'].purchases[i].amount=this.dash.currentDetails['data'].purchases[i].amount + values.amount;
+              this.dash.currentDetails['data'].purchases[i].time_created=this.getTime();
               return true;
               break;
           }

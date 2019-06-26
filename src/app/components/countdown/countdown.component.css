@@ -15,3 +15,16 @@
 {
 	padding-top:2px;
 }
+
+@media(max-width:480px) 
+{
+	.current-date
+	{
+		font-size:1.22em;
+	}
+
+	.countdown
+	{
+		color:rgba(0,0,0,0.77);
+	}
+}

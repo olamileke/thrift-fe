@@ -1,4 +1,5 @@
-import { Component, OnInit, Renderer2, ViewChild, Output, EventEmitter, ElementRef } from '@angular/core';
+import { Component, OnInit, Renderer2, ViewChild, Output, EventEmitter } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
@@ -7,43 +8,119 @@ import { Component, OnInit, Renderer2, ViewChild, Output, EventEmitter, ElementR
 })
 export class SidebarComponent implements OnInit {
 
-  @ViewChild('arrow') arrow;
-  @ViewChild('altlinks') altlinks;
-  @ViewChild('altlinkparent') altlinkparent;
+  @ViewChild('expenseArrow') expense_arrow;
+  @ViewChild('analysisArrow') analysis_arrow;
+  @ViewChild('expenselinks') expenselinks;
+  @ViewChild('expenseParent') expenseParent;
+  @ViewChild('analysislinks') analysislinks;
+  @ViewChild('analysisParent') analysisParent;
 
   @Output() switchTab=new EventEmitter();
 
-  constructor(private renderer:Renderer2,private elRef:ElementRef) { }
+  tabs={dashboard:true, spending:false, analysis:false, reports:false, history:false}
+
+
+  constructor(private renderer:Renderer2, private route:ActivatedRoute) { }
 
   ngOnInit() {
 
-    if(this.elRef.nativeElement.classList.contains('expense-toggled')) {
-
-      this.toggleAltLinks();
-    }
+      this.setInitialActiveTab();
   }
 
 
-  toggleAltLinks():boolean {
+  setInitialActiveTab() {
 
-  	if(!this.altlinks.nativeElement.classList.contains('show')) {
+      let tab=this.route.snapshot.paramMap.get('tab');
 
-  		this.renderer.addClass(this.altlinks.nativeElement, 'show');
-  		this.renderer.addClass(this.altlinkparent.nativeElement, 'alt-link-active');
-  		this.renderer.addClass(this.arrow.nativeElement, 'active');
-  		return true;
-  	}
+      if(tab.includes('Expenses')) {
 
-	  this.renderer.removeClass(this.altlinks.nativeElement, 'show');
-  	this.renderer.removeClass(this.altlinkparent.nativeElement, 'alt-link-active');
-	  this.renderer.removeClass(this.arrow.nativeElement, 'active');
+          tab='spending';
+      }
+
+      if(tab == 'singlePeriod' || tab == 'comparison') {
+
+          tab='analysis';
+      }
+
+      this.changeActiveTab(tab);
+
   }
+
+
+  toggleLinks(tab:string) {
+
+    if(tab == 'spending') {
+
+      	this.toggleSpendingLinks();
+     }
+     else if(tab == 'analysis') {
+
+         this.toggleAnalysisLinks();
+     } 
+  }
+
+
+  toggleSpendingLinks() {
+
+      if(!this.expenselinks.nativeElement.classList.contains('show')) {
+
+        this.renderer.addClass(this.expenselinks.nativeElement, 'show');
+        this.renderer.addClass(this.expenseParent.nativeElement, 'alt-link-active');
+        this.renderer.addClass(this.expense_arrow.nativeElement, 'active');
+        return true;
+      }
+
+       this.renderer.removeClass(this.expenselinks.nativeElement, 'show');
+       this.renderer.removeClass(this.expenseParent.nativeElement, 'alt-link-active');
+       this.renderer.removeClass(this.expense_arrow.nativeElement, 'active');
+  }
+
+  toggleAnalysisLinks() {
+
+      if(!this.analysislinks.nativeElement.classList.contains('show')) {
+
+        this.renderer.addClass(this.analysislinks.nativeElement, 'show');
+        this.renderer.addClass(this.analysisParent.nativeElement, 'alt-link-active');
+        this.renderer.addClass(this.analysis_arrow.nativeElement, 'active');
+        return true;
+      }
+
+       this.renderer.removeClass(this.analysislinks.nativeElement, 'show');
+       this.renderer.removeClass(this.analysisParent.nativeElement, 'alt-link-active');
+       this.renderer.removeClass(this.analysis_arrow.nativeElement, 'active');
+  }
+
 
   // emitting the event to the parent component to switch the active tab 
 
   toggleTab(tab:string):void {
 
+      let param=tab;
+
+      if(param.includes('Expenses')) {
+
+          param='spending';
+      }
+
+      if(param == 'singlePeriod' || param == 'comparison') {
+
+          param='analysis'
+      }
+
+      this.changeActiveTab(param);
       this.switchTab.emit(tab);
+  }
+
+  changeActiveTab(tab:string) {
+
+      const tabKeys=Object.keys(this.tabs);
+
+      for(let i=0; i < tabKeys.length; i++) {
+
+          this.tabs[tabKeys[i]]=false;
+      }
+
+      this.tabs[tab]=true;
   }
 
 }

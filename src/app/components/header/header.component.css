@@ -19,7 +19,19 @@ img
 {
 	font-family:'Gloria Hallelujah', cursive;
 	font-size:1.5em;
-	color:#C21807;
+	color:#C21807 !important;
+}
+
+.navbar-nav a
+{
+	font-family:'Raleway', sans-serif;
+	font-size:0.9em;
+	cursor:pointer;
+}
+
+.dropdown-item
+{
+	font-size:0.8em !important;
 }
 
 input

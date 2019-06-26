@@ -1,8 +1,43 @@
  
-<nav class='navbar navbar-expand-md py-3 px-5'>
-	<a routerLink='/dashboard' class='navbar-brand mr-auto'>Thrift</a>
+<nav class='navbar navbar-expand-lg py-3 px-lg-5 navbar-light'>
+	<a routerLink='/dashboard' (click)="emitToggleTab('dashboard')" class='navbar-brand mr-auto'>Thrift</a>
 
-	<div class='search-info-container d-flex align-items-center'>
+	<button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbar-content'>
+		<span class='navbar-toggler-icon'></span>
+	</button>
+
+	<div class='collapse navbar-collapse' id='navbar-content' *ngIf='breakpoint'>
+		<ul class='navbar-nav pl-2'>
+			
+			<li class='nav-item'>
+				<a routerLink='/dashboard' class='nav-link' (click)="emitToggleTab('dashboard')">Dashboard</a>
+			</li>
+			<li class='nav-item dropdown'>
+				<a class='nav-link dropdown-toggle' role='button' data-toggle='dropdown'>View Spending</a>
+
+				<div class='dropdown-menu'>
+					<a class='dropdown-item text-muted' routerLink='/dailyExpenses' (click)="emitToggleTab('dailyExpenses')">Daily Expenses</a>
+					<a class='dropdown-item' routerLink='/monthlyExpenses' (click)="emitToggleTab('monthlyExpenses')">Monthly Expenses</a>
+				</div>
+			</li>
+			<li class='nav-item dropdown'>
+				<a class='nav-link dropdown-toggle' role='button' data-toggle='dropdown'>Analysis</a>
+
+				<div class='dropdown-menu'>
+					<a class='dropdown-item text-muted' routerLink='/singlePeriod' (click)="emitToggleTab('singlePeriod')">Single Period</a>
+					<a class='dropdown-item' routerLink='/comparison' (click)="emitToggleTab('comparison')">Comparison</a>
+				</div>
+			</li>
+			<li class='nav-item'>
+				<a routerLink='/reports' class='nav-link' (click)="emitToggleTab('reports')">Reports</a>
+			</li>
+			<li class='nav-item'>
+				<a routerLink='/history' class='nav-link' (click)="emitToggleTab('history')">View History</a>
+			</li>
+		</ul>
+	</div>
+
+	<div class='search-info-container d-flex align-items-center' *ngIf='!breakpoint'>
 		<input type="" name="" class='form-control form-control-sm mr-2'>
 		<img src="assets/images/AuthHome/search.svg" width='16px' height='16px' class='search-icon'>
 

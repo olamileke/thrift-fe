@@ -1,22 +1,24 @@
+<app-loader [class.active]='isLoading | async'></app-loader>
 
 <div class='container-fluid px-0'>
 	
-	<app-header></app-header>
-
-	<app-loader [class.active]='isLoading | async'></app-loader>
+	<app-header (toggleTab)='toggleTab($event)'></app-header>
 
 	<div class='container pt-3'>
 		
 		<div class='row'>
-			<div class='col-md-3 d-none d-md-block pt-5'>
+			<div class='col-lg-3 d-none d-lg-block pt-5'>
 				<app-sidebar (switchTab)='toggleTab($event)'></app-sidebar>
 			</div>
 
-			<div class='col-md-8 ml-0 ml-md-5 pt-3'>
+			<div class='col-lg-8 ml-0 ml-lg-5 mb-3 mb-sm-0 pt-3'>
 				<app-countdown></app-countdown>
 				<app-dashboard *ngIf='views.dashboard'></app-dashboard>
 				<app-daily-expenses *ngIf='views.dailyExpenses'></app-daily-expenses>
 				<app-monthly-expenses *ngIf='views.monthlyExpenses'></app-monthly-expenses>
+				<app-single-period *ngIf='views.singlePeriod'></app-single-period>
+				<app-comparison *ngIf='views.comparison'></app-comparison>
+				<app-reports *ngIf='views.reports'></app-reports>
 			</div>
 		</div>
 	</div>
@@ -39,9 +41,9 @@
 	      		to ensure the correct recording of said expense items
 	      	</div>
 	      	<form class='form-inline' [formGroup]='addExpenseForm' (ngSubmit)='addExpense(addExpenseForm)'>
-	      		<input type="text" formControlName='name' class='form-control form-control-sm mr-2' placeholder="Name">
+	      		<input type="text" formControlName='name' class='form-control form-control-sm mr-2 mb-3 mb-sm-0' placeholder="Name">
 
-	      		<p class='my-0 mr-1 ml-0'>N</p><input type="number" formControlName='amount' class='form-control form-control-sm mr-2' placeholder="Amount">
+	      		<p class='d-none d-sm-inline my-0 mr-1 ml-0'>N</p><input type="number" formControlName='amount' class='form-control form-control-sm mr-2 mb-3 mb-sm-0' placeholder="Amount">
 
 	      		<button type='submit' class='btn btn-danger btn-sm' [disabled]='addExpenseForm.invalid'>Add</button>
 	      	</form>

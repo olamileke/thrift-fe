@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +7,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
+  breakpoint:boolean=false;
+  @Output() toggleTab=new EventEmitter();
+
   constructor() { }
 
   ngOnInit() {
+
+  	if(screen.width <= 991) {
+
+  		this.breakpoint=true;
+  	}
+
+  }
+
+  // letting the parent component know to display a different view
+
+  emitToggleTab(tab:string):void {
+
+  	this.toggleTab.emit(tab);
   }
 
 }

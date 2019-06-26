@@ -12,21 +12,42 @@
 		
 		<form class='form-inline' [formGroup]='monthForm' (ngSubmit)='submit(monthForm)'>
 			
-			<input formControlName='month' class='form-control form-control-sm mr-3'>
+			<select formControlName='month' class='custom-select mb-3 mb-sm-0 form-control-sm mr-0 mr-sm-3'>
+				<option>January</option>
+				<option>February</option>
+				<option>March</option>
+				<option>April</option>
+				<option>May</option>
+				<option>June</option>
+				<option>July</option>
+				<option>August</option>
+				<option>September</option>
+				<option>October</option>
+				<option>November</option>
+				<option>December</option>
+			</select>
+
+			<select formControlName='year' class='custom-select mb-3 mb-sm-0 mr-0 mr-sm--3'>
+				<option>2019</option>
+			</select>
 			<button type='submit' class='btn btn-danger btn-sm'>Fetch</button>
 		</form>
 
-		<table class='table table-borderless' *ngIf=''>
+		<div *ngIf='fetchedData' class='col-12 pl-2 details pt-4'>
+			{{ getPurchaseDetails() }}
+		</div>
+
+		<table class='table table-borderless mt-3 py-' *ngIf='purchases.length > 0'>
 			<thead>
 				<th>Name</th>
 				<th>Amount</th>
 				<th>Time</th>
 			</thead>
 			<tbody>
-				<tr *ngFor='let expense of expenses'>
-					<td>{{ expense.name }}</td>
-					<td>{{ expense.amount }}</td>
-					<td>{{ expense.created_at }}</td>
+				<tr *ngFor='let purchase of purchases'>
+					<td>{{ purchase.name }}</td>
+					<td>{{ purchase.amount }}</td>
+					<td>{{ purchase.time_created }}</td>
 				</tr>
 			</tbody>
 		</table>

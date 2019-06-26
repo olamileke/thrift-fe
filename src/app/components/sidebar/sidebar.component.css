@@ -1,20 +1,35 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap');
 
+li:first-child
+{
+	border-radius:4px 4px 0 0;
+}
+
+li:last-child
+{
+	border-radius:0 0 4px 4px;
+}
 
 ul
 {
 	margin-top:4vh;
-	padding:20px 0;
+	/*padding:20px 0;*/
 	border-radius:4px;
-	background:#fff;
+	/*background:#fff;*/
 	border:1px solid rgba(0,0,0,0.1);
 }
 
 li
 {
+	position:relative;
 	padding:13px 20px;
 	background:#fff;
+}
+
+li.active
+{
+	background:transparent;
 }
 
 li.alt-link-active
@@ -29,6 +44,7 @@ a
 	font-family:'Raleway', sans-serif;
 	font-size:0.9em;
 	cursor:pointer;
+	outline:none;
 }
 
 .alt-links
@@ -64,6 +80,8 @@ img
 
 img.arrow
 {
+	position:absolute;
+	left:82%;
 	width:11px;
 	height:11px;
 	transition:all 0.5s ease-in;

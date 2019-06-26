@@ -24,6 +24,12 @@ thead
 	background:url('../../../assets/Images/AuthHome/backdrop.png');
 }
 
+.details
+{	
+	font-family: 'Quicksand', sans-serif;
+	font-size:0.9em;
+}
+
 th
 {
 	font-family:'Raleway', sans-serif;

@@ -19,6 +19,32 @@ button
 	font-size:0.85em;
 }
 
+.btn-danger
+{
+	position: relative;
+	/*top:-1px;*/
+	left:-18px;
+}
+
+
+.details
+{
+	font-family: 'Quicksand', sans-serif;
+	font-size:0.9em;
+}
+
+form
+{
+	position:relative;
+}
+
+.input-group-append
+{
+	position:relative;
+	left:-32px;
+	border-radius:0 .2rem .2rem 0;
+}
+
 thead
 {
 	background:url('../../../assets/Images/AuthHome/backdrop.png');
@@ -35,4 +61,20 @@ td
 	font-family:'Quicksand', sans-serif;
 	font-size:0.86em;
 	width:33.3%;
+}
+
+
+@media(max-width:576px) 
+{
+	.btn-danger
+	{
+		left:0;
+	}
+
+	.input-group-append
+	{
+		position:absolute;
+		top:0;
+		left:calc(100% - 34px);
+	}
 }

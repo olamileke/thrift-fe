@@ -23,6 +23,12 @@ export class UserService {
   }
 
 
+  sendPasswordResetMail(data:any) {
+
+     return this.http.post(environment.url+`sendpasswordresetmail`, data, this.httpOptions);
+  }
+
+
   get httpOptions() {
 
      const options={headers:new HttpHeaders({'Content-Type':'application/json'})};

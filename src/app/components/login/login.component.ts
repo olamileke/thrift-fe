@@ -61,7 +61,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
       this.auth.login(JSON.stringify(form.value)).pipe(takeUntil(this.onDestroy$)).subscribe((res:any) => {
 
-          this.auth.setToken(res.token);
+          this.auth.setData(res.token, res.user);
           this.router.navigate(['/dashboard']);
       });
   }
@@ -98,6 +98,24 @@ export class LoginComponent implements OnInit, OnDestroy {
 	      this.renderer.setAttribute(this.passwordinput.nativeElement, 'type', 'password');
 	  }
 
+  }
+
+
+  forgotPassword() {
+
+      if(this.loginForm.get('email').invalid) {
+
+          this.notification.showErrorMsg('Please enter a valid email address');
+      }
+      else {
+
+          let data={email:this.loginForm.get('email').value};
+
+          this.userservice.sendPasswordResetMail(data).subscribe(() => {
+
+              this.notification.showSuccessMsg('Password reset mail sent!');
+          });
+      }
   }
 
 }

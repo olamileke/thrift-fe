@@ -1,3 +1,39 @@
-<p>
-  reports works!
-</p>
+
+<div class='row my-2'>
+	
+	<div class='col-12 py-4 px-4 heading'>
+		Generate spending reports
+	</div>
+</div>
+
+
+<div class='row'>
+	
+	<div class='col-12 px-4 py-4 main'>
+
+		<form class='form-inline' [formGroup]='reportsForm' (ngSubmit)='submit(reportsForm)'>
+			<div class='form-group d-flex flex-column align-items-start mr-3'>
+				<label for='from' class='mb-1'>From</label>
+				<input formControlName='from' ngx-mydatepicker [options]="myOptions" #from="ngx-mydatepicker" class='form-control form-control-sm' id='from'>
+				<div class="input-group-append">
+			        <button class='bg-transparent border border-transparent py-1' (click)="from.toggleCalendar()" type="button">
+			        	<img src='assets/images/Expenses/calendar.svg' width='20px' height='20px'/>
+			        </button>
+		      	</div>
+			</div>
+			<div class='form-group d-flex flex-column align-items-start mr-3'>
+				<label for='to' class='mb-1'>To</label>
+				<input formControlName='to' ngx-mydatepicker [options]='myOptions' #to='ngx-mydatepicker' class='form-control form-control-sm' id='to'>
+				<div class="input-group-append">
+			        <button class='bg-transparent border border-transparent py-1' (click)="to.toggleCalendar()" type="button">
+			        	<img src='assets/images/Expenses/calendar.svg' width='20px' height='20px'/>
+			        </button>
+		      	</div>
+			</div>
+			<div class='form-group'>
+				<button type='submit' class='btn btn-danger btn-sm'>Download</button>
+			</div>
+		</form>
+	</div>
+
+</div>

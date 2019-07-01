@@ -18,8 +18,10 @@ import { DashboardComponent } from '../dashboard/dashboard.component';
 export class AuthHomeComponent implements OnInit {
 
   isLoading:Subject<boolean>=this.loader.isLoading;
+  searchTerm:string;
   addExpenseForm:FormGroup;
-  views={dashboard:false, dailyExpenses:false, monthlyExpenses:false, singlePeriod:false, comparison:false, reports:false};
+  views={dashboard:false, dailyExpenses:false, monthlyExpenses:false, 
+        singlePeriod:false, comparison:false, reports:false, search:false};
 
   @ViewChild(DashboardComponent) dashboard:DashboardComponent;
 
@@ -66,7 +68,7 @@ export class AuthHomeComponent implements OnInit {
 
   // determining which view is displayed
 
-  setActiveView(tab:string) {
+  setActiveView(tab:string, searchTerm?:string) {
 
   	const viewKeys=Object.keys(this.views);
 
@@ -76,6 +78,16 @@ export class AuthHomeComponent implements OnInit {
   	}
 
   	this.views[tab]=true;
+
+    if(tab == 'search') {
+        
+        this.setSearchParams(searchTerm);       
+    }
+  }
+
+  setSearchParams(searchTerm:string) {
+
+      this.searchTerm=searchTerm;
   }
 
 
@@ -111,14 +123,13 @@ export class AuthHomeComponent implements OnInit {
 
           if(!this.hasBeenRecorded(values)) {
 
-              this.dash.currentDetails['data'].purchases.push({name:values.name, amount:parseFloat(values.amount), time_created:this.getTime()});
+              this.dash.currentDetails['data'].purchases.push({name:values.name, amount:parseFloat(values.amount), time:this.getTime()});
             }
       }
 
       if(this.views.dashboard) {
 
         this.dashboard.remIncome=this.dashboard.remIncome - values.amount;
-        // this.dashboard.styles['width']=String((/res.data.total_income) * 100)+'%';
       }
   }
 
@@ -148,7 +159,12 @@ export class AuthHomeComponent implements OnInit {
 
     let hour=date.getHours();
 
-    let minutes=date.getMinutes();
+    let minutes=String(date.getMinutes());
+
+    if(minutes.length == 1) {
+
+      minutes=`0${minutes}`;
+    }
 
     if(hour < 12) {
 

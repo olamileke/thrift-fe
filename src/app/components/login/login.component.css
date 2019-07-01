@@ -2,11 +2,12 @@
 @import url('https://fonts.googleapis.com/css?family=Heebo&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Gloria+Hallelujah&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap');
-@import url('https://use.fontawesome.com/releases/v5.8.1/css/all.css');	
+@import url('https://use.fontawesome.com/releases/v5.8.1/css/all.css');
 
 a
 {
 	text-decoration: none;
+	cursor:pointer;
 }
 
 .brand-name

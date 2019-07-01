@@ -15,7 +15,7 @@ export class DashboardComponent implements OnInit {
   savingsTarget:number;
   remPercent:string;
   styles:any={};
-  purchases:any={};
+  purchases=[];
   dataFetched:boolean=false;
 
   private onDestroy$:Subject<void>=new Subject<void>();
@@ -58,7 +58,7 @@ export class DashboardComponent implements OnInit {
     this.dataFetched=true;
 
     console.log(res);
-    
+
     this.totalIncome=res.data.total_income;
     this.remIncome=res.data.current_income;
     this.purchases=res.data.purchases;

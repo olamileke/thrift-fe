@@ -27,7 +27,7 @@
 				<option>December</option>
 			</select>
 
-			<select formControlName='year' class='custom-select mb-3 mb-sm-0 mr-0 mr-sm--3'>
+			<select formControlName='year' class='custom-select mb-3 mb-sm-0 mr-0 mr-sm-3'>
 				<option>2019</option>
 			</select>
 			<button type='submit' class='btn btn-danger btn-sm'>Fetch</button>
@@ -47,7 +47,7 @@
 				<tr *ngFor='let purchase of purchases'>
 					<td>{{ purchase.name }}</td>
 					<td>{{ purchase.amount }}</td>
-					<td>{{ purchase.time_created }}</td>
+					<td>{{ purchase.time }}</td>
 				</tr>
 			</tbody>
 		</table>

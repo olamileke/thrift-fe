@@ -1,0 +1,33 @@
+
+<div class='row my-2'>
+	
+	<div class='col-12 py-4 px-4 heading' *ngIf='fetchedData'>
+		You searched for  "{{ searchTerm }}"
+	</div>
+</div>
+
+<div class='row'>
+	
+	<div class='col-12 px-4 pt-4 pb-3 main'>
+
+		<div *ngIf='fetchedData' class='col-12 pl-2 details pt-2'>
+			{{ getPurchaseDetails() }}
+		</div>
+
+		<table class='table table-borderless mt-3 py-0' *ngIf='purchases.length > 0'>
+
+			<thead>
+				<th>Name</th>
+				<th>Amount</th>
+				<th>Time</th>
+			</thead>
+			<tbody>
+				<tr *ngFor='let purchase of purchases'>
+					<td>{{ purchase.name }}</td>
+					<td>{{ purchase.amount }}</td>
+					<td>{{ purchase.time }}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>

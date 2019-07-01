@@ -5,6 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr'
 import { NgxMyDatePickerModule } from 'ngx-mydatepicker';
+import { ChartsModule } from 'ng2-charts';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -25,6 +26,7 @@ import { DailyExpensesComponent } from './components/daily-expenses/daily-expens
 import { ReportsComponent } from './components/reports/reports.component';
 import { SinglePeriodComponent } from './components/single-period/single-period.component';
 import { ComparisonComponent } from './components/comparison/comparison.component';
+import { SearchComponent } from './components/search/search.component';
 
 
 @NgModule({
@@ -43,7 +45,8 @@ import { ComparisonComponent } from './components/comparison/comparison.componen
     DailyExpensesComponent,
     ReportsComponent,
     SinglePeriodComponent,
-    ComparisonComponent
+    ComparisonComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
@@ -52,6 +55,7 @@ import { ComparisonComponent } from './components/comparison/comparison.componen
     HttpClientModule,
     ReactiveFormsModule,
     NgxMyDatePickerModule.forRoot(),
+    ChartsModule,
     AppRoutingModule,
   ],
   providers: [

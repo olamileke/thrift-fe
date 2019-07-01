@@ -2,7 +2,7 @@
 
 <div class='container-fluid px-0'>
 	
-	<app-header (toggleTab)='toggleTab($event)'></app-header>
+	<app-header (toggleTab)='toggleTab($event)' (search)="setActiveView('search', $event)"></app-header>
 
 	<div class='container pt-3'>
 		
@@ -19,6 +19,7 @@
 				<app-single-period *ngIf='views.singlePeriod'></app-single-period>
 				<app-comparison *ngIf='views.comparison'></app-comparison>
 				<app-reports *ngIf='views.reports'></app-reports>
+				<app-search *ngIf='views.search' [searchTerm]='searchTerm'></app-search>
 			</div>
 		</div>
 	</div>

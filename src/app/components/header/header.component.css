@@ -1,8 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Gloria+Hallelujah&display=swap');
-
-:host
-{
-}
+@import url('https://use.fontawesome.com/releases/v5.8.1/css/all.css');
 
 nav
 {
@@ -20,6 +17,21 @@ img
 	font-family:'Gloria Hallelujah', cursive;
 	font-size:1.5em;
 	color:#C21807 !important;
+}
+
+
+.fa-caret-down
+{
+	color:rgba(0,0,0,0.4);
+}
+
+
+.name
+{
+	position:relative;
+	font-size:0.9em;
+	font-family:'Raleway', sans-serif;
+	width:100px;
 }
 
 .navbar-nav a
@@ -44,6 +56,16 @@ input
 	font-size:0.8em;
 }
 
+.nav-item
+{
+	position:relative;
+}
+
+.nav-item input
+{
+	border-radius:4px;
+}
+
 .search-info-container
 {
 	position:relative;
@@ -54,10 +76,70 @@ input
 	position:absolute;
 	top:12px;
 	left:12px;
+	cursor:pointer;
 }
 
-.user-details img
+.nav-item .search-icon
+{
+	top:8px;
+	left:9px;
+}
+
+.user-details
+{
+	position:relative;
+	cursor:pointer;
+}
+
+
+img
 {
 	border-radius:50%;
 }
 
+.options
+{
+	position:absolute;
+	top:calc(100% + 27px);
+	left:calc((100% - 110px)/2);
+	background:#fff;
+	z-index:10;
+	border:1px solid rgba(0,0,0,0.1);
+	border-radius:4px;
+	opacity:0;
+	transition:all 0.3s ease-in;
+}
+
+.options.show
+{
+	top:calc(100% + 20px);
+	opacity:1;
+}
+
+.options a
+{
+	color:rgba(0,0,0,0.7);
+	font-family:'Quicksand', sans-serif;
+	font-size:0.85em;
+	text-decoration: none;
+}
+
+.options li:hover
+{
+	background:rgba(0,0,0,0.06);
+}
+
+.options li:hover a
+{
+	/*color:#fff;*/
+}
+
+
+@media(max-width:991px)
+{
+	nav
+	{
+		padding-left:10px;
+		padding-right:10px;
+	}
+}

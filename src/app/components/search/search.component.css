@@ -1,0 +1,43 @@
+
+.heading
+{
+	font-family: 'Raleway', sans-serif;
+	background:#fff;
+	border:1px solid rgba(0,0,0,0.1);
+	font-size:1.2em;
+}
+
+
+.main
+{
+	border:1px solid rgba(0,0,0,0.1);
+	background:#fff;
+}
+
+
+.details
+{
+	font-family: 'Quicksand', sans-serif;
+	font-size:0.9em;
+}
+
+
+thead
+{
+	background:url('../../../assets/Images/AuthHome/backdrop.png');
+}
+
+
+th
+{
+	font-family:'Raleway', sans-serif;
+	font-size:0.9em;
+}
+
+
+td
+{
+	font-family:'Quicksand', sans-serif;
+	font-size:0.86em;
+	width:33.3%;
+}

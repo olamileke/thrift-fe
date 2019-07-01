@@ -31,9 +31,18 @@ export class AuthService {
       return localStorage.thrift_api_token;
   }
 
-  setToken(token:string) {
+  setData(token:string, user:any) {
 
   	localStorage.thrift_api_token=token;
+    localStorage.thrift_user=JSON.stringify(user);
+
+  }
+
+
+  unsetData() {
+
+     localStorage.removeItem('thrift_api_token');
+     localStorage.removeItem('thrift_user');
   }
 
 

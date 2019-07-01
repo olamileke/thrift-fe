@@ -1,0 +1,66 @@
+
+.heading
+{
+	font-family: 'Raleway', sans-serif;
+	background:#fff;
+	border:1px solid rgba(0,0,0,0.1);
+	font-size:1.2em;
+}
+
+.heading p
+{
+	font-size:0.7em;
+}
+
+.main
+{
+	border:1px solid rgba(0,0,0,0.1);
+	border-bottom-color:transparent;
+	background:#fff;
+}
+
+.chart-container
+{
+	border:1px solid rgba(0,0,0,0.1);
+	border-top-color:transparent;
+	background:#fff;
+}
+
+.title
+{
+	font-family:'Raleway', sans-serif;	
+}
+
+.form-group
+{
+	position:relative;
+}
+
+.input-group-append
+{
+	margin-top:1px;
+	position:absolute;
+	top:20px;
+	left:calc(100% - 33px);
+	border-radius:0 .2rem .2rem 0;
+	cursor:pointer;
+}
+
+.input-group-append button
+{
+	padding-bottom:4px;
+}
+
+label
+{
+	font-family:'Quicksand', sans-serif;
+	font-size:0.9em;
+}	
+
+.btn.btn-danger
+{
+	position:relative;
+	top:13px;	
+	font-family:'Raleway', sans-serif;
+	font-size:0.85em;
+}

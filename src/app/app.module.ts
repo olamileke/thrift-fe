@@ -27,6 +27,8 @@ import { ReportsComponent } from './components/reports/reports.component';
 import { SinglePeriodComponent } from './components/single-period/single-period.component';
 import { ComparisonComponent } from './components/comparison/comparison.component';
 import { SearchComponent } from './components/search/search.component';
+import { PasswordResetComponent } from './components/password-reset/password-reset.component';
+import { OverviewComponent } from './components/overview/overview.component';
 
 
 @NgModule({
@@ -46,7 +48,9 @@ import { SearchComponent } from './components/search/search.component';
     ReportsComponent,
     SinglePeriodComponent,
     ComparisonComponent,
-    SearchComponent
+    SearchComponent,
+    PasswordResetComponent,
+    OverviewComponent
   ],
   imports: [
     BrowserModule,

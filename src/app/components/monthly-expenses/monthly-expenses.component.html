@@ -33,7 +33,21 @@
 			<button type='submit' class='btn btn-danger btn-sm'>Fetch</button>
 		</form>
 
-		<div *ngIf='fetchedData' class='col-12 pl-2 details pt-4'>
+		<div *ngIf='fetchedData && !isCurrentMonth()' class='col-12 pl-2 details pt-4'>
+
+			<p class='m-0 mb-1'>Initial Total Income of N {{ monthIncome.original_amount | number }} </p>
+			<p class='m-0 mb-1'>{{ getSavingsStatement() }}</p>
+			<p>Final Income of N {{ monthIncome.final_amount | number }}</p>
+
+			{{ getPurchaseDetails() }}
+		</div>
+
+		<div *ngIf='fetchedData && isCurrentMonth()' class='col-12 pl-2 details pt-4'>
+
+			<p class='m-0 mb-1'>Initial Total Income of N {{ monthIncome.original_amount | number}} </p>
+			<p class='m-0 mb-1'>{{ getSavingsStatement() }}</p>
+			<p>Current Income of N {{ monthIncome.final_amount | number }}</p>
+
 			{{ getPurchaseDetails() }}
 		</div>
 

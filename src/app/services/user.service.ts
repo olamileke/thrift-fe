@@ -29,6 +29,18 @@ export class UserService {
   }
 
 
+  verifyResetToken(token:string) {
+
+     return this.http.get(environment.url+`password/reset/verifytoken/${token}`);
+  }
+
+
+  resetPassword(data:any) {
+
+      return this.http.post(environment.url+`password/reset`, data, this.httpOptions);
+  }
+
+
   get httpOptions() {
 
      const options={headers:new HttpHeaders({'Content-Type':'application/json'})};

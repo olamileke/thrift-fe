@@ -1,0 +1,54 @@
+
+.heading
+{
+	font-family: 'Raleway', sans-serif;
+	background:#fff;
+	border:1px solid rgba(0,0,0,0.1);
+	font-size:1.2em;
+}
+
+.heading p
+{
+	font-size:0.7em;
+}
+
+.main
+{
+	border:1px solid rgba(0,0,0,0.1);
+	background:#fff;
+}
+
+
+.information
+{
+	/*background:url('../../../assets/Images/AuthHome/backdrop.png');*/
+	border-radius:4px;
+	background:rgba(0,0,0,0.06);
+	border:1px solid rgba(0,0,0,0.1);
+}
+
+
+.description
+{
+	width:50%;
+	font-family:'Quicksand', sans-serif;
+}
+
+.amt
+{
+	width:48%;
+	font-family:'Raleway',sans-serif;
+}
+
+ul
+{
+	font-family:'Raleway',sans-serif;
+	font-size:0.9em;
+}
+
+
+.recordsFrom
+{
+	font-family:'Raleway', sans-serif;
+	font-size:0.8em;
+}

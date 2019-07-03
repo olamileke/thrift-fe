@@ -19,6 +19,12 @@ button
 	font-size:0.85em;
 }
 
+select
+{
+	font-family:'Raleway', sans-serif;
+	font-size:0.8em;
+}
+
 thead
 {
 	background:url('../../../assets/Images/AuthHome/backdrop.png');

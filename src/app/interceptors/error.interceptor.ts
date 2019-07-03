@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { HttpInterceptor, HttpEvent, HttpRequest, HttpHandler } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 import { NotificationService } from '../services/notification.service';
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
 
-	constructor(private notification:NotificationService) {}
+	constructor(private notification:NotificationService, private router:Router) {}
 
 	intercept(req:HttpRequest<any>, next:HttpHandler):Observable<HttpEvent<any>> {
 
@@ -27,7 +28,7 @@ export class ErrorInterceptor implements HttpInterceptor {
 
 		if(error.error.url == 'api/login') {
 
-			this.notification.showErrorMsg('Username or Password is incorrect', 'Authentication failed');
+			this.notification.showErrorMsg('Incorrect username or password');
 		}
 
 		if(error.error.url == 'api/account/activate') {
@@ -38,6 +39,22 @@ export class ErrorInterceptor implements HttpInterceptor {
 		if(error.error.url == 'api/sendpasswordresetmail') {
 
 			this.notification.showErrorMsg('User does not exist for the specified email');
+		}
+
+
+		if(error.error.url == 'api/password/reset/verifytoken') {
+
+			if(error.error.error == 'Invalid Token') {
+
+				this.notification.showErrorMsg('Invalid token');
+				this.router.navigate(['/login']);
+			}
+
+			if(error.error.error == 'Expired Token') {
+
+				this.notification.showErrorMsg('Expired Token');
+				this.router.navigate(['/login']);	
+			}
 		}
 
 		return of(error);

@@ -13,6 +13,8 @@ export class MonthlyExpensesComponent implements OnInit {
   monthForm:FormGroup;
   months=['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
   purchases=[];
+  monthIncome:any;
+  savings:any;
   fetchedData:boolean=false;
 
   constructor(private fb:FormBuilder, private expenses:ExpensesService) { }
@@ -22,7 +24,7 @@ export class MonthlyExpensesComponent implements OnInit {
   	this.monthForm=this.fb.group({
 
   		month:[this.getCurrentMonth(), [Validators.required]],
-      year:['2019', [Validators.required]]
+        year:['2019', [Validators.required]]
   	});
   }
 
@@ -42,7 +44,11 @@ export class MonthlyExpensesComponent implements OnInit {
      this.expenses.fetchMonthly(data).subscribe((res:any) => {
 
          this.fetchedData=true;
-         this.purchases=res.data;
+         this.purchases=res.purchases;
+         this.monthIncome=res.monthIncome;
+         this.savings=res.savings;
+
+         console.log(res);
      });
   }
 
@@ -70,6 +76,40 @@ export class MonthlyExpensesComponent implements OnInit {
     }
 
     return 'N '+String(total);
+  }
+
+
+  isCurrentMonth():boolean {
+
+      if(this.monthIncome.month == this.getCurrentMonth() && this.monthIncome.year == '2019') {
+
+          return true;
+      }
+
+      return false;
+  }
+
+
+  getSavingsStatement():string {
+
+
+      if(this.isCurrentMonth()) {
+
+          if(this.savings.is_achieved) {
+
+              return `Savings Target of N ${this.savings.amount}`;
+          }
+
+          return `Savings Target of N ${this.savings.amount} not achieved`;
+      }
+      
+
+      if(this.savings.is_achieved) {
+
+          return `Savings Target of N ${this.savings.amount} achieved`;
+      }
+
+      return `Savings Target of N ${this.savings.amount} not achieved`;
   }
 
 }

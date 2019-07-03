@@ -21,7 +21,7 @@ export class AuthHomeComponent implements OnInit {
   searchTerm:string;
   addExpenseForm:FormGroup;
   views={dashboard:false, dailyExpenses:false, monthlyExpenses:false, 
-        singlePeriod:false, comparison:false, reports:false, search:false};
+        singlePeriod:false, comparison:false, reports:false, search:false, overview:false};
 
   @ViewChild(DashboardComponent) dashboard:DashboardComponent;
 

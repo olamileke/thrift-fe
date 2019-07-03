@@ -16,4 +16,10 @@ export class DashboardService {
 
   	return this.http.get(environment.url+`dashboard/current-details`);
   }
+
+
+  getOverViewData() {
+
+  	return this.http.get(environment.url+`dashboard/overview`);
+  }
 }

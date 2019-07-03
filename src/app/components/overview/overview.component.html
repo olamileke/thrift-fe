@@ -1,0 +1,47 @@
+
+<div class='row my-2'>
+	
+	<div class='col-12 py-3 px-4 heading'>
+		Overview
+		<p class='m-0 text-muted'>A high level outlook on your financial history</p>
+	</div>
+</div>
+
+
+<div class='row main'>
+	
+	<div class='col-12 px-4 px-md-4 pt-4 pb-3 mb-3'>
+
+		<div class='row px-4 pt-2 pt-md-0 px-md-3 justify-content-md-center'>
+			
+			<div class='col-12 col-sm-5 mr-sm-3 mb-3 mb-md-0 col-md-3 mr-md-5 information py-3 d-flex align-items-center'>
+				
+				<p class='m-0 description small text-muted mr-2'>TOTAL INCOME</p>
+				<p class='m-0 amt text-muted font-weight-bold text-right text-sm-left'>N {{ totalIncome }}</p>
+			</div>
+			<div class='col-12 col-sm-5 col-md-3 mb-3 mb-md-0 mr-md-5 information py-3 d-flex align-items-center'>
+				
+				<p class='m-0 description small text-muted mr-2'>AMOUNT EXPENDED</p>
+				<p class='m-0 amt text-muted font-weight-bold text-right text-sm-left'>N {{ amountSpent }}</p>
+			</div>
+			<div class='col-12 col-sm-5 col-md-3 mr-2 mr-md-5 information py-3 d-flex align-items-center'>
+				<p class='m-0 description small text-muted mr-2'>AMOUNT REMAINING</p>
+				<p class='m-0 amt text-muted font-weight-bold text-right text-sm-left'>N {{ remIncome }}</p>
+			</div>
+		</div>
+	</div>
+
+	<div class='col-12 mb-2'>
+		<ul class='text-muted'>
+			<li class='mb-2'>Your average daily spend is N {{ avgSpend | number }}</li>
+			<li class='mb-2'>You spend the most on <b>{{ getItemName(0) }}</b> with a total expense of N {{ getItemCost(0) | number }} </li>
+			<li class='mb-2'>The next item you spend the most on is <b>{{ getItemName(1) }}</b> with a total expense of N {{ getItemCost(1) | number}}</li>
+			<li>Lastly, the item with the third most amount spent is <b>{{ getItemName(2) }}</b> with N {{ getItemCost(2) | number }} being spent</li>
+		</ul>
+	</div>
+
+	<div class='col-12 recordsFrom px-5 mb-3'>
+		<p class='mb-0 text-muted'>*Take note that the above records are for {{ dateJoined }} up till today </p>
+	</div>
+
+</div>

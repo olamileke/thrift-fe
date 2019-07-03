@@ -8,7 +8,7 @@ import { HomeComponent } from './components/home/home.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { LoginComponent } from './components/login/login.component';
 import { AuthHomeComponent } from './components/auth-home/auth-home.component';
-
+import { PasswordResetComponent } from './components/password-reset/password-reset.component'
 
 const routes:Routes=[
 						{path:'', component:HomeComponent},
@@ -16,7 +16,8 @@ const routes:Routes=[
 						{path:'login', component:LoginComponent, canActivate:[GuestGuard]},
 						{path:':tab', component:AuthHomeComponent, canActivate:[AuthGuard]},
 						{path:'expenses/:period', component:AuthHomeComponent, canActivate:[AuthGuard]},
-						{path:'account/activate/:token', component:LoginComponent, canActivate:[GuestGuard]}						
+						{path:'account/activate/:token', component:LoginComponent, canActivate:[GuestGuard]},
+						{path:'password/reset/:token', component:PasswordResetComponent, canActivate:[GuestGuard]}						
 					];
 
 @NgModule({

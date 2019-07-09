@@ -1,6 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Subject, interval } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { Component, OnInit, Input } from '@angular/core';
 import { DashboardService } from '../../services/dashboard.service';
 
 @Component({
@@ -10,66 +8,54 @@ import { DashboardService } from '../../services/dashboard.service';
 })
 export class DashboardComponent implements OnInit {
 	
-  totalIncome:number;
-  remIncome:number;
-  savingsTarget:number;
+  totalIncome:number=0;
+  remIncome:number=0;
+  savingsTarget:number=0;
   remPercent:string;
   styles:any={};
   purchases=[];
   dataFetched:boolean=false;
-
-  private onDestroy$:Subject<void>=new Subject<void>();
+  @Input() response;
+  save_failed:boolean=false;
 
   constructor(private dash:DashboardService) { }
 
   ngOnInit() {
 
-     // checking if the income details have been fetched before and then setting them appropriately
+      if(Object.keys(this.response).length > 0) {
 
-    if(Object.keys(this.dash.currentDetails).length == 0) {
-
-      this.fetchInitialValues();      
-    }
-    else {
-
-        this.setInitialValues(this.dash.currentDetails);
-    }
+          this.setInitialValues(this.response);
+      }
   }
-
-
-  ngOnDestroy() {
-
-  	this.onDestroy$.next();
-  }
-
-
-  fetchInitialValues():void {
-
-  	this.dash.fetchCurrentDetails().pipe(takeUntil(this.onDestroy$)).subscribe((res:any) => {
-
-      this.dash.currentDetails=res;
-      this.setInitialValues(res);
-  	});
-  }
-  
 
   setInitialValues(res:any) {
 
     this.dataFetched=true;
 
-    console.log(res);
-
     this.totalIncome=res.data.total_income;
     this.remIncome=res.data.current_income;
-    this.purchases=res.data.purchases;
+    this.savingsTarget=res.data.savings_target;
 
+    if(res.data.hasOwnProperty('purchases')) {
+
+      this.purchases=res.data.purchases;
+    }
+    
     // calculating the percentage of income remaining to use in the loader
 
     this.remPercent=String((res.data.current_income/res.data.total_income) * 100)+'%';
     this.styles['width']=this.remPercent;
-    this.savingsTarget=res.data.savings_target
-  }
 
+    if(this.remIncome < this.savingsTarget) {
+
+        this.styles['background']='#DC3545';
+        this.save_failed=true;
+    }
+    else {
+
+      this.styles['background']='#00A86B';
+    }
+  }
  
 
   getPurchaseDetails():string {

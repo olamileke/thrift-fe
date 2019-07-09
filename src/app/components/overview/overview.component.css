@@ -21,10 +21,8 @@
 
 .information
 {
-	/*background:url('../../../assets/Images/AuthHome/backdrop.png');*/
 	border-radius:4px;
-	background:rgba(0,0,0,0.06);
-	border:1px solid rgba(0,0,0,0.1);
+	/*border:1px solid rgba(0,0,0,0.1);*/
 }
 
 
@@ -32,12 +30,14 @@
 {
 	width:50%;
 	font-family:'Quicksand', sans-serif;
+	color:#fff;
 }
 
 .amt
 {
 	width:48%;
 	font-family:'Raleway',sans-serif;
+	color:#fff;
 }
 
 ul
@@ -47,8 +47,8 @@ ul
 }
 
 
-.recordsFrom
+.record
 {
 	font-family:'Raleway', sans-serif;
-	font-size:0.8em;
+	font-size:0.9em;
 }

@@ -19,7 +19,7 @@ export class ErrorInterceptor implements HttpInterceptor {
 
 	handleError(error:any) {
 
-		console.log(error.error);
+		console.log(error);
 
 		if(error.error.url == 'api/signup') {
 
@@ -47,14 +47,14 @@ export class ErrorInterceptor implements HttpInterceptor {
 			if(error.error.error == 'Invalid Token') {
 
 				this.notification.showErrorMsg('Invalid token');
-				this.router.navigate(['/login']);
 			}
 
 			if(error.error.error == 'Expired Token') {
 
 				this.notification.showErrorMsg('Expired Token');
-				this.router.navigate(['/login']);	
 			}
+
+			this.router.navigate(['/login']);	
 		}
 
 		return of(error);

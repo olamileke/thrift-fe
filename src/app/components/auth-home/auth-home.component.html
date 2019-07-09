@@ -2,7 +2,7 @@
 
 <div class='container-fluid px-0'>
 	
-	<app-header (toggleTab)='toggleTab($event)' (search)="setActiveView('search', $event)"></app-header>
+	<app-header (toggleTab)='toggleTab($event)' (search)="setActiveView('search', $event)" (update)='toggleUpdateMonthlyDialog(true)' (changePicture)='togglePictureChangeDialog(true)'></app-header>
 
 	<div class='container pt-3'>
 		
@@ -13,14 +13,17 @@
 
 			<div class='col-lg-8 ml-0 ml-lg-5 mb-3 mb-sm-0 pt-3'>
 				<app-countdown></app-countdown>
-				<app-dashboard *ngIf='views.dashboard'></app-dashboard>
+				<app-dashboard *ngIf='views.dashboard' [response]='incomeData' (addMonthlyData)='toggleAddMonthlyDialog(true)'></app-dashboard>
 				<app-daily-expenses *ngIf='views.dailyExpenses'></app-daily-expenses>
 				<app-monthly-expenses *ngIf='views.monthlyExpenses'></app-monthly-expenses>
 				<app-single-period *ngIf='views.singlePeriod'></app-single-period>
 				<app-comparison *ngIf='views.comparison'></app-comparison>
 				<app-reports *ngIf='views.reports'></app-reports>
 				<app-overview *ngIf='views.overview'></app-overview>
+				<app-add-monthly-data [class.active]='addMonthlyData' (close)='toggleAddMonthlyDialog(false, $event)'></app-add-monthly-data>
 				<app-search *ngIf='views.search' [searchTerm]='searchTerm'></app-search>
+				<app-update-monthly-data [class.active]='updateMonthlyData' (close)='toggleUpdateMonthlyDialog(false, $event)'></app-update-monthly-data>
+				<app-image-upload [class.active]='uploadImage' (close)='togglePictureChangeDialog(false)'></app-image-upload>
 			</div>
 		</div>
 	</div>

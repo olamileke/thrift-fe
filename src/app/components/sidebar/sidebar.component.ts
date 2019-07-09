@@ -17,7 +17,7 @@ export class SidebarComponent implements OnInit {
 
   @Output() switchTab=new EventEmitter();
 
-  tabs={dashboard:true, spending:false, analysis:false, reports:false, history:false, overview:false}
+  tabs={dashboard:true, spending:false, analysis:false, reports:false, overview:false}
 
 
   constructor(private renderer:Renderer2, private route:ActivatedRoute) { }

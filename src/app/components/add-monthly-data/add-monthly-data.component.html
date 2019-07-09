@@ -1,0 +1,27 @@
+
+<div class="modal fade show" tabindex="-1" role="dialog" id='addExpenseModal' data-backdrop="static" data-keyboard="false" style='display:block'>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Add Income data for {{ month }}</h5>
+      </div>
+      <div class="modal-body">
+      	<div class='alert alert-secondary text-muted'>
+      		
+          Hey <b>{{ name }}</b>, your income details for {{ month }} are unavailable. Provide these details by filling the form below.
+      	</div>
+      	<form class='form-inline' [formGroup]='addMonthlyDataForm' (ngSubmit)='submit(addMonthlyDataForm)'>
+          <p class='d-none d-sm-inline my-0 mr-1 ml-0'>N</p>
+      		<input type="number" formControlName='income' class='form-control form-control-sm mr-2 mb-3 mb-sm-0' placeholder="Income">
+
+      		<p class='d-none d-sm-inline my-0 mr-1 ml-0'>N</p><input type="number" formControlName='savingsTarget' class='form-control form-control-sm mr-2 mb-3 mb-sm-0' placeholder="Savings Target">
+
+      		<button type='submit' class='btn btn-danger btn-sm' [disabled]='addMonthlyDataForm.invalid'>Submit</button>
+      	</form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn bg-transparent text-muted btn-sm" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

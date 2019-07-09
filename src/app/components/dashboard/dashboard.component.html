@@ -8,11 +8,12 @@
 			<span class="text-muted small">N {{ remIncome }} left of N {{ totalIncome }}</span>
 			<div class='loader mt-2'></div>
 			<div class='loaded' [ngStyle]="styles"></div>
+			<p class='m-0 text-muted small save-failure' *ngIf='save_failed'>*You have failed to achieve your savings target</p>
 		</div>
 
 		<div class='savings-stmt'>
 			<span class='small text-muted'>SAVINGS TARGET</span>
-			<p class='mb-0' class="save-target">{{ savingsTarget }}</p>
+			<p class='mb-0' class="save-target">N {{ savingsTarget }}</p>
 		</div>
 	</div>
 </div>

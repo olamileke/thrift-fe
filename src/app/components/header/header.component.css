@@ -26,6 +26,11 @@ img
 }
 
 
+.navbar-toggler
+{
+	border:none !important;
+}
+
 .name
 {
 	position:relative;
@@ -41,9 +46,16 @@ img
 	cursor:pointer;
 }
 
+.nav-link.active
+{
+	color:rgba(217, 83, 79,0.7) !important;
+	font-size:1.03em !important;
+}
+
 .dropdown-item
 {
 	font-size:0.8em !important;
+	font-family:'Raleway', sans-serif;
 }
 
 input
@@ -81,8 +93,8 @@ input
 
 .nav-item .search-icon
 {
-	top:8px;
-	left:9px;
+	top:17px;
+	left:27px;
 }
 
 .user-details
@@ -103,7 +115,7 @@ img
 	top:calc(100% + 27px);
 	left:calc((100% - 110px)/2);
 	background:#fff;
-	z-index:10;
+	z-index:-10;
 	border:1px solid rgba(0,0,0,0.1);
 	border-radius:4px;
 	opacity:0;
@@ -114,6 +126,7 @@ img
 {
 	top:calc(100% + 20px);
 	opacity:1;
+	z-index:1;
 }
 
 .options a
@@ -129,11 +142,29 @@ img
 	background:rgba(0,0,0,0.06);
 }
 
-.options li:hover a
+
+.nav-item
 {
-	/*color:#fff;*/
+	font-size:1em !important;
+	/*border-top:1px solid rgba(0,0,0,0.03);*/
+	text-transform: uppercase;
+	font-weight:bold;
 }
 
+.dropdown-menu
+{
+	border:none !important;
+}
+
+.navbar-content
+{
+	position:absolute;
+	top:100%;
+	z-index:999;
+	background:rgba(255,255,255,0.95);
+	border-top:1px solid rgba(0,0,0,0.02);
+	border-bottom:1px solid rgba(0,0,0,0.17);
+}
 
 @media(max-width:991px)
 {

@@ -9,6 +9,7 @@ import { DashboardService } from '../../services/dashboard.service';
 import { NotificationService } from '../../services/notification.service';
 
 import { DashboardComponent } from '../dashboard/dashboard.component';
+import { UpdateMonthlyDataComponent } from '../update-monthly-data/update-monthly-data.component';
 
 @Component({
   selector: 'app-auth-home',
@@ -23,7 +24,15 @@ export class AuthHomeComponent implements OnInit {
   views={dashboard:false, dailyExpenses:false, monthlyExpenses:false, 
         singlePeriod:false, comparison:false, reports:false, search:false, overview:false};
 
+  addMonthlyData:boolean=false;
+  updateMonthlyData:boolean=false;
+  uploadImage:boolean=false;
+  income:number;
+  savingsTarget:number;
+  incomeData:any={};
+
   @ViewChild(DashboardComponent) dashboard:DashboardComponent;
+  @ViewChild(UpdateMonthlyDataComponent) updateData:UpdateMonthlyDataComponent;
 
   constructor(private loader:LoaderService, private router:Router,
               private route:ActivatedRoute, private fb:FormBuilder,
@@ -39,6 +48,28 @@ export class AuthHomeComponent implements OnInit {
     })
 
   	this.determineView();
+    this.fetchIncomeDetails();
+  }
+
+
+  fetchIncomeDetails() {
+
+    this.dash.fetchCurrentDetails().subscribe((res:any) => {
+
+    if(res.data == 'No income details for the month') {
+
+        this.addMonthlyData=true;
+    }
+    else {
+
+        this.incomeData=res;
+        this.dash.currentDetails=res;
+        if(this.views.dashboard) {
+
+            this.dashboard.setInitialValues(res);
+        }
+    }
+    });
   }
 
 
@@ -63,6 +94,10 @@ export class AuthHomeComponent implements OnInit {
 
   		this.setActiveView(tab);
   	}
+    else {
+
+      this.router.navigate(['/error/404']);  
+    }
   }
 
 
@@ -100,15 +135,35 @@ export class AuthHomeComponent implements OnInit {
   addExpense(form:FormGroup) {
 
       let formattedName=form.get('name').value.charAt(0).toUpperCase()+form.get('name').value.slice(1,).toLowerCase();
-
       let info={name:formattedName, amount:form.get('amount').value};
 
-      this.expense.add(JSON.stringify(info)).subscribe(() => {
+      if(this.validate(info.amount)) {
 
-          this.notification.showSuccessMsg('Expense Item successfully added');
-          this.setIncomeDetails(info);
-          form.reset();
-      });
+          this.expense.add(JSON.stringify(info)).subscribe(() => {
+
+              this.notification.showSuccessMsg('Expense Item successfully added');
+              this.setIncomeDetails(info);
+              form.reset();
+          });
+     }
+  }
+
+
+  validate(amount:number):boolean {
+
+      if(this.dash.currentDetails['data'].current_income == 0) {
+
+          this.notification.showErrorMsg('Your income has been exhausted');
+          return false;
+      }
+
+      if(amount > this.dash.currentDetails['data'].current_income) {
+
+          this.notification.showErrorMsg('Entered amount is greater than remaining income');
+          return false;
+      }
+
+      return true;
   }
 
 
@@ -120,16 +175,18 @@ export class AuthHomeComponent implements OnInit {
       if(Object.keys(this.dash.currentDetails).length != 0) {
 
           this.dash.currentDetails['data'].current_income-=values.amount;
+          this.dash.currentDetails['data'].remIncome -= values.amount;
+
 
           if(!this.hasBeenRecorded(values)) {
 
               this.dash.currentDetails['data'].purchases.push({name:values.name, amount:parseFloat(values.amount), time:this.getTime()});
-            }
+           }
       }
 
       if(this.views.dashboard) {
 
-        this.dashboard.remIncome=this.dashboard.remIncome - values.amount;
+          this.dashboard.setInitialValues(this.dash.currentDetails);
       }
   }
 
@@ -178,5 +235,48 @@ export class AuthHomeComponent implements OnInit {
 
         return `${hour - 12}:${minutes} PM`;            
     }
+  }
+
+
+  toggleAddMonthlyDialog(param:boolean, data?:any) {
+
+    if(param) {
+
+        this.addMonthlyData=true;
+    }
+    else {
+
+        this.addMonthlyData=false;
+        this.dashboard.setInitialValues(data);
+        this.dash.currentDetails=data;
+    }
+  }
+
+
+  toggleUpdateMonthlyDialog(param:boolean, data=null) {
+      
+      if(param) {
+
+          // setting the initial default value of the inputs in the updatemonthlydata dialog to the 
+          // current income and savings target
+
+          this.updateData.setValues(this.dash.currentDetails['data'].total_income,this.dash.currentDetails['data'].savings_target)
+          this.updateMonthlyData=true;
+      }
+      else {
+
+          this.updateMonthlyData=false;
+
+          if(this.views.dashboard && data != null) {
+
+              this.dashboard.setInitialValues(data);
+          }
+      }
+  }
+
+
+  togglePictureChangeDialog(param:boolean) {
+
+  	this.uploadImage=param;
   }
 }

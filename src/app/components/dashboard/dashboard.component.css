@@ -43,6 +43,12 @@
 	color:rgba(0,0,0,0.95);
 }
 
+.save-failure
+{
+	position:relative;
+	top:-5px;
+}
+
 
 .purchases
 {

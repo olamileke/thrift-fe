@@ -1,43 +1,49 @@
-  
-<nav class='navbar navbar-expand-lg py-3 px-lg-5 navbar-light'>
-	<a routerLink='/dashboard' (click)="emitToggleTab('dashboard')" class='navbar-brand mr-auto'>Thrift</a>
+<nav class='navbar navbar-expand-lg py-3 px-0 px-lg-5 navbar-light'>
+	<a routerLink='/dashboard' (click)="emitToggleTab('dashboard')" class='navbar-brand ml-3 ml-lg-0 mr-auto'>Thrift</a>
 
+	<div class='d-block d-lg-none mr-2' (click)='toggleNavbar()'>
+		<img src="http://localhost/Images/Users/leke.JPG" class='mr-2' width='39px' height='39px'>	
+		<i class='fas fa-caret-down' style='position:relative;top:3px;'></i>
+	</div>
 
-	<!-- <img src="http://localhost/Images/Users/leke.JPG" class='mr-2' width='38px' height='38px'> -->
-
-	<button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbar-content'>
-		<span class='navbar-toggler-icon'></span>
-	</button>
-
-	<div class='collapse navbar-collapse' id='navbar-content' *ngIf='breakpoint'>
-		<ul class='navbar-nav pl-2'>
+	<div class='navbar-content w-100 d-none' *ngIf='breakpoint' #navbarContent>
+		<ul class='navbar-nav text-center'>
 			
-			<li class='nav-item'>
-				<a routerLink='/dashboard' class='nav-link' (click)="emitToggleTab('dashboard')">Dashboard</a>
+			<li class='nav-item py-2'>
+				<a routerLink='/dashboard' [ngClass]="{'nav-link':'1==1', 'active':tabs.dashboard}" (click)="emitToggleTab('dashboard')">Dashboard</a>
 			</li>
-			<li class='nav-item dropdown'>
-				<a class='nav-link dropdown-toggle' role='button' data-toggle='dropdown'>View Spending</a>
+			<li class='nav-item dropdown py-2'>
+				<a [ngClass]="{'nav-link':'1==1','dropdown-toggle':'1==1','active':tabs.spending}" role='button' data-toggle='dropdown'>View Spending</a>
 
-				<div class='dropdown-menu'>
+				<div class='dropdown-menu text-center'>
 					<a class='dropdown-item text-muted' routerLink='/dailyExpenses' (click)="emitToggleTab('dailyExpenses')">Daily Expenses</a>
 					<a class='dropdown-item' routerLink='/monthlyExpenses' (click)="emitToggleTab('monthlyExpenses')">Monthly Expenses</a>
 				</div>
 			</li>
-			<li class='nav-item dropdown'>
-				<a class='nav-link dropdown-toggle' role='button' data-toggle='dropdown'>Analysis</a>
+			<li class='nav-item dropdown py-2'>
+				<a [ngClass]="{'nav-link':'1==1','dropdown-toggle':'1==1','active':tabs.analysis}" role='button' data-toggle='dropdown'>Analysis</a>
 
-				<div class='dropdown-menu'>
+				<div class='dropdown-menu text-center'>
 					<a class='dropdown-item text-muted' routerLink='/singlePeriod' (click)="emitToggleTab('singlePeriod')">Single Period</a>
 					<a class='dropdown-item' routerLink='/comparison' (click)="emitToggleTab('comparison')">Comparison</a>
 				</div>
 			</li>
-			<li class='nav-item'>
-				<a routerLink='/reports' class='nav-link' (click)="emitToggleTab('reports')">Reports</a>
+			<li class='nav-item py-2'>
+				<a routerLink='/reports' [ngClass]="{'nav-link':'1==1', 'active':tabs.reports}" (click)="emitToggleTab('reports')">Reports</a>
 			</li>
-			<li class='nav-item'>
-				<a routerLink='/history' class='nav-link' (click)="emitToggleTab('overview')">Overview</a>
+			<li class='nav-item py-2'>
+				<a routerLink='/overview' [ngClass]="{'nav-link':'1==1', 'active':tabs.overview}" (click)="emitToggleTab('overview')">Overview</a>
 			</li>
-			<li class='nav-item mt-2'> 
+			<li class='nav-item py-2'>
+				<a class='nav-link' (click)='emitUpdate()'>Update Income Information</a>
+			</li>
+			<li class='nav-item py-2'>
+				<a class='nav-link' (click)='emitPictureChange()'>Change Picture</a>
+			</li>
+			<li class='nav-item py-2'>
+				<a class='nav-link' (click)='logout()'>Logout</a>
+			</li>
+			<li class='nav-item px-3 py-2'> 
 				<input type="" name="" class='form-control form-control-sm mr-2' (input)='setSearchTerm($event.target.value)' #searchInput>
 				<img src="assets/images/AuthHome/search.svg" width='16px' height='16px' class='search-icon' (click)='emitSearch()'>
 			</li>
@@ -54,11 +60,14 @@
 			<i class='fas fa-caret-down'></i>
 
 			<ul class='list-unstyled options p-1' #options>
-				<li class='text-center p-2'>
+				<li class='text-center p-2' (click)='emitUpdate()'>
+					<a>Update Profile Information</a>
+				</li>
+				<li class='text-center p-2' (click)='emitPictureChange()'>
 					<a>Change Picture</a>
 				</li>
-				<li class='text-center p-2'	>
-					<a (click)='logout()'>Logout</a>
+				<li class='text-center p-2' (click)='logout()'>
+					<a>Logout</a>
 				</li>
 			</ul>
 		</div>

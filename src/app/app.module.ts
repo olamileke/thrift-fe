@@ -29,6 +29,10 @@ import { ComparisonComponent } from './components/comparison/comparison.componen
 import { SearchComponent } from './components/search/search.component';
 import { PasswordResetComponent } from './components/password-reset/password-reset.component';
 import { OverviewComponent } from './components/overview/overview.component';
+import { ErrorComponent } from './components/error/error.component';
+import { AddMonthlyDataComponent } from './components/add-monthly-data/add-monthly-data.component';
+import { UpdateMonthlyDataComponent } from './components/update-monthly-data/update-monthly-data.component';
+import { ImageUploadComponent } from './components/image-upload/image-upload.component';
 
 
 @NgModule({
@@ -50,7 +54,11 @@ import { OverviewComponent } from './components/overview/overview.component';
     ComparisonComponent,
     SearchComponent,
     PasswordResetComponent,
-    OverviewComponent
+    OverviewComponent,
+    ErrorComponent,
+    AddMonthlyDataComponent,
+    UpdateMonthlyDataComponent,
+    ImageUploadComponent
   ],
   imports: [
     BrowserModule,

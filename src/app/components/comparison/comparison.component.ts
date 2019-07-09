@@ -19,7 +19,7 @@ export class ComparisonComponent implements OnInit {
   chartType:string='line';
   chartDataset=[];
   chartLabels=[];
-  chartOptions={responsive:true,legend:{labels:{fontFamily:'Raleway', padding:10}},
+  chartOptions={responsive:true,legend:{labels:{fontFamily:'Raleway', padding:5, fontSize:15}},
   				 scales:{ yAxes:[{gridLines:{zeroLineColor:'transparent'},ticks: { padding: 10,fontColor: "rgba(0,0,0,0.8)", beginAtZero: true, fontFamily:'Raleway'}}],
 						  xAxes: [{gridLines:{zeroLineColor:'transparent', display:false},ticks: {padding: 10,fontColor: "rgba(0,0,0,0.8)", fontFamily:'Raleway'}}]}
 				};

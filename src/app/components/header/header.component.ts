@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter, ViewChild, Renderer2 } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { NotificationService } from '../../services/notification.service';
 import { AuthService } from '../../services/auth.service';
@@ -14,22 +14,52 @@ export class HeaderComponent implements OnInit {
   breakpoint:boolean=false;
   @Output() toggleTab=new EventEmitter();
   @Output() search=new EventEmitter();
+  @Output() update=new EventEmitter();
+  @Output() changePicture=new EventEmitter();
   @ViewChild('searchInput') searchInput;
+  @ViewChild('navbarContent') navbarContent;
   @ViewChild('options') options;
   searchTerm:string='';
-
   name:string=JSON.parse(localStorage.thrift_user).name;
 
+  tabs={dashboard:false, spending:false, analysis:false, reports:false,overview:false};
+
   constructor(private notification:NotificationService, private renderer:Renderer2,
-              private auth:AuthService, private router:Router) { }
+              private auth:AuthService, private router:Router, private route:ActivatedRoute) { }
 
   ngOnInit() {
 
   	if(screen.width <= 991) {
 
   		this.breakpoint=true;
+
+        let tab=this.route.snapshot.paramMap.get('tab');
+        this.determineActiveTab(tab);
   	}
 
+  }
+
+
+  determineActiveTab(tab:string):void {
+
+      if(tab.includes('Expense')) {
+
+          tab='spending';
+      }
+
+      if(tab == 'singlePeriod' || tab == 'comparison') {
+
+          tab='analysis';
+      }
+
+      const tabKeys=Object.keys(this.tabs);
+
+      for(let i=0; i < tabKeys.length; i++) {
+
+          this.tabs[tabKeys[i]]=false;
+      }
+
+      this.tabs[tab]=true;
   }
 
   // letting the parent component know to display a different view
@@ -37,6 +67,8 @@ export class HeaderComponent implements OnInit {
   emitToggleTab(tab:string):void {
 
   	this.toggleTab.emit(tab);
+    this.toggleNavbar();
+    this.determineActiveTab(tab);
   }
 
 
@@ -52,11 +84,20 @@ export class HeaderComponent implements OnInit {
       this.searchTerm=this.searchTerm.charAt(0).toUpperCase() + this.searchTerm.slice(1,).toLowerCase();
       this.search.emit(this.searchTerm);
       this.renderer.setProperty(this.searchInput.nativeElement, 'value', '');
+
+      this.toggleNavbar();
     }
     else {
 
         this.notification.showErrorMsg('Search Term must be at least 3 characters long');
     }
+  }
+
+
+  emitPictureChange() {
+
+      this.changePicture.emit();
+      this.toggleNavbar();
   }
 
 
@@ -77,11 +118,35 @@ export class HeaderComponent implements OnInit {
   }
 
 
+  emitUpdate() {
+
+      this.update.emit();
+      this.toggleNavbar();
+  }
+
+
+
   logout() {
 
      this.auth.unsetData();
      this.router.navigate(['/login']);
      this.notification.showSuccessMsg('Logged out successfully');
+  }
+
+
+  toggleNavbar() {
+
+      if(this.navbarContent.nativeElement.classList.contains('d-none')) {
+
+          this.renderer.removeClass(this.navbarContent.nativeElement, 'd-none');
+          this.renderer.addClass(this.navbarContent.nativeElement, 'd-block');
+      }
+      else {
+
+          this.renderer.addClass(this.navbarContent.nativeElement, 'd-none');
+          this.renderer.removeClass(this.navbarContent.nativeElement, 'd-block');
+      }
+
   }
 
 }

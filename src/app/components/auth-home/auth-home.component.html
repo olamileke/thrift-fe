@@ -23,7 +23,7 @@
 				<app-add-monthly-data [class.active]='addMonthlyData' (close)='toggleAddMonthlyDialog(false, $event)'></app-add-monthly-data>
 				<app-search *ngIf='views.search' [searchTerm]='searchTerm'></app-search>
 				<app-update-monthly-data [class.active]='updateMonthlyData' (close)='toggleUpdateMonthlyDialog(false, $event)'></app-update-monthly-data>
-				<app-image-upload [class.active]='uploadImage' (close)='togglePictureChangeDialog(false)'></app-image-upload>
+				<app-image-upload [class.active]='uploadImage' (close)='togglePictureChangeDialog(false, $event)'></app-image-upload>
 			</div>
 		</div>
 	</div>

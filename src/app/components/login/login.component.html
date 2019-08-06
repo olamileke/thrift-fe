@@ -9,7 +9,7 @@
 		
 	</div>
 
-	<div class='row justify-content-around w-100 px-0 px-sm-3' style='position:relative; left:15px;'>
+	<div class='row justify-content-around px-0 px-sm-3' style='width:100vw !important'>
 		<p class='col-auto mr-auto'>
 			<a routerLink='/' class='brand-name'>Thrift</a>
 		</p>
@@ -30,12 +30,12 @@
 				<form class='mt-4' [formGroup]='loginForm' (ngSubmit)='submit(loginForm)'>
 					<div class='form-group d-flex flex-column'>
 						<label for='email' class='text-muted'>Email</label>
-						<input formControlName='email' type="email" id='email' class='text-muted'>
+						<input formControlName='email' type="email" id='email' class='text-muted form-control form-control-sm'>
 						<!-- <i class='far fa-envelope'></i> -->
 					</div>
 					<div class='form-group d-flex flex-column'>
 						<label for='password' class='text-muted'>Password</label>
-						<input formControlName='password' type="password" id='password' (input)='toggleEyeDisplay($event.target.value)' #passwordinput>
+						<input formControlName='password' class='form-control form-control-sm' type="password" id='password' (input)='toggleEyeDisplay($event.target.value)' #passwordinput>
 						<i class='far fa-eye d-none eye' #eye (click)='togglePasswordDisplay()'></i>
 						<!-- <i class='fa fa-key'></i> -->
 					</div>

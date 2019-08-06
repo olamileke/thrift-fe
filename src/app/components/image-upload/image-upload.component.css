@@ -1,4 +1,6 @@
- :host
+@import url('https://use.fontawesome.com/releases/v5.8.1/css/all.css');
+
+:host
 {
 	position:fixed;
 	top:0;
@@ -27,6 +29,43 @@
 }
 
 .modal-body
+{
+	font-family:'Quicksand', sans-serif;
+	padding:15px !important;
+	min-height:170px;
+}
+
+
+.drop-container
+{
+	position:absolute;
+	top:10px;
+	left:10px;
+	width:calc(100% - 20px);
+	background:url('../../../assets/Images/AuthHome/backdrop.png');
+	height:150px;
+	cursor:pointer;
+	border-radius:4px;
+}
+
+.selected-image
+{
+	margin-top:55px !important;
+	width:calc(100% + 10px) !important;
+}
+
+.heading
+{
+	font-size:0.95em;
+}
+
+.selected-image
+{
+	border-radius:4px;
+	font-size:0.8em;
+}
+
+.btn-danger
 {
 	font-family:'Raleway', sans-serif;
 }
@@ -57,3 +96,4 @@ input
 {
 	border:1px solid rgba(0,0,0,0.35) !important;
 }
+

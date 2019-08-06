@@ -28,11 +28,15 @@ button
 
 .input-group-append
 {
-	margin-top:1px;
 	position:absolute;
-	top:24px;
+	top:0;
 	left:calc(100% - 33px);
 	border-radius:0 .2rem .2rem 0;
+}
+
+
+.input-group-append button
+{
 	cursor:pointer;
 }
 

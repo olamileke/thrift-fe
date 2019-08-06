@@ -19,7 +19,9 @@ export class HeaderComponent implements OnInit {
   @ViewChild('searchInput') searchInput;
   @ViewChild('navbarContent') navbarContent;
   @ViewChild('options') options;
+  displaySearch:boolean=false;
   searchTerm:string='';
+  imgSrc=JSON.parse(localStorage.thrift_user).avatar;
   name:string=JSON.parse(localStorage.thrift_user).name;
 
   tabs={dashboard:false, spending:false, analysis:false, reports:false,overview:false};
@@ -64,10 +66,14 @@ export class HeaderComponent implements OnInit {
 
   // letting the parent component know to display a different view
 
-  emitToggleTab(tab:string):void {
+  emitToggleTab(tab:string, toggle=null):void {
 
   	this.toggleTab.emit(tab);
-    this.toggleNavbar();
+
+    if(toggle == null) {
+
+      this.toggleNavbar();
+    }
     this.determineActiveTab(tab);
   }
 
@@ -84,8 +90,6 @@ export class HeaderComponent implements OnInit {
       this.searchTerm=this.searchTerm.charAt(0).toUpperCase() + this.searchTerm.slice(1,).toLowerCase();
       this.search.emit(this.searchTerm);
       this.renderer.setProperty(this.searchInput.nativeElement, 'value', '');
-
-      this.toggleNavbar();
     }
     else {
 
@@ -136,17 +140,26 @@ export class HeaderComponent implements OnInit {
 
   toggleNavbar() {
 
-      if(this.navbarContent.nativeElement.classList.contains('d-none')) {
+      if(screen.width <= 991) {
 
-          this.renderer.removeClass(this.navbarContent.nativeElement, 'd-none');
-          this.renderer.addClass(this.navbarContent.nativeElement, 'd-block');
-      }
-      else {
+        if(this.navbarContent.nativeElement.classList.contains('d-none')) {
 
-          this.renderer.addClass(this.navbarContent.nativeElement, 'd-none');
-          this.renderer.removeClass(this.navbarContent.nativeElement, 'd-block');
-      }
+            this.renderer.removeClass(this.navbarContent.nativeElement, 'd-none');
+            this.renderer.addClass(this.navbarContent.nativeElement, 'd-block');
+        }
+        else {
 
+            this.renderer.addClass(this.navbarContent.nativeElement, 'd-none');
+            this.renderer.removeClass(this.navbarContent.nativeElement, 'd-block');
+        }
+       }
+
+  }
+
+
+  toggleSearch() {
+
+      this.displaySearch=!this.displaySearch;
   }
 
 }

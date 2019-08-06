@@ -6,6 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr'
 import { NgxMyDatePickerModule } from 'ngx-mydatepicker';
 import { ChartsModule } from 'ng2-charts';
+import { FileDropModule } from 'ngx-file-drop';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -68,6 +69,7 @@ import { ImageUploadComponent } from './components/image-upload/image-upload.com
     ReactiveFormsModule,
     NgxMyDatePickerModule.forRoot(),
     ChartsModule,
+    FileDropModule,
     AppRoutingModule,
   ],
   providers: [

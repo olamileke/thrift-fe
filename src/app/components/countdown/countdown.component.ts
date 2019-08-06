@@ -39,7 +39,7 @@ export class CountdownComponent implements OnInit {
 
   	this.setCountdown(`${this.monthEnds[month]} ${this.months[month]}, ${year} 23:59:59`);
 
-  	return `${this.days[date.getDay()].slice(0,3)}, ${date.getDate()} ${this.months[month]}, ${year}`;
+  	return `${this.days[date.getDay()].slice(0,3)} ${date.getDate()} ${this.months[month]}, ${year}`;
   }
 
 

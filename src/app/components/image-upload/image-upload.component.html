@@ -1,20 +1,37 @@
-
+ 
 
 <div class="modal fade show" tabindex="-1" role="dialog" style='display:block'>
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Change Your Display Picture</h5>
+        <h5 class="modal-title text-muted">Change Your Display Picture</h5>
         <button type="button" class="close" (click)='emitClose()' aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body d-flex flex-column align-items-center">
-      	
-      	<img src="assets/images/ImageUpload/upload.svg" width='70px' height='70px'>
+
+        <file-drop (onFileDrop)="fileDropped($event)">
+            <div class='drop-container d-flex mb-2 flex-column align-items-center justify-content-center' (click)='selectImage()' #dropContainer>
+
+                  <p class='m-0 mb-2 text-muted heading'>Drag an Image here or click</p>
+                  <img src="assets/images/ImageUpload/upload.svg" width='50px' height='50px;'>
+            </div>
+        </file-drop>
+        <div class='d-flex justify-content-between px-3 border mt-5 py-2 selected-image' *ngIf='imgSelected'>
+            <p class='m-0 font-weight-bold' style='cursor:pointer'>{{ imgName }}</p>
+            <i class='fa fa-trash mt-1' style='cursor:pointer;' (click)='deleteImage()'></i>
+        </div>
+
+        <button class='btn btn-danger mt-2' (click)='upload()'>
+            UPLOAD
+        </button>
+
+        <input type="file" (change)='setImage($event.target)'  #fileInput hidden>
+
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn bg-transparent text-muted btn-sm" (click)='emitClose()'>Close</button>
+            <button type="button" class="btn bg-transparent text-muted btn-sm" (click)='emitClose()'>Close</button>
       </div>
     </div>
   </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ViewChild, Renderer2 } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { INgxMyDpOptions, IMyDateModel } from 'ngx-mydatepicker';
 import { Subject } from 'rxjs';
@@ -31,8 +31,6 @@ export class SinglePeriodComponent implements OnInit, OnDestroy {
 			    borderColor: 'rgb(87, 160, 211)',
 			    pointBackgroundColor: 'rgb(87, 160, 211)',
 			    pointBorderColor: 'rgb(87, 160, 211)',
-			    // pointHoverBackgroundColor: '#fff',
-			    // pointHoverBorderColor: 'rgba(103, 58, 183, .8)'}
   				}]
   fetchedData:boolean=false;
 
@@ -89,15 +87,20 @@ export class SinglePeriodComponent implements OnInit, OnDestroy {
   getDateString(date:Date) {
 
       let year=date.getFullYear();
-      let month=date.getMonth() + 1;
-      let day=date.getDate();
+      let month=String(date.getMonth() + 1);
+      let day=String(date.getDate());
 
-      if(month < 10) {
+      if(month.length == 1) {
 
-          this.month=`0${month}`;
+          month='0'+month;
       }
 
-      return `${year}-${this.month}-${day}`;
+      if(day.length == 1) {
+
+          day='0'+day;
+      }
+
+      return `${year}-${month}-${day}`;
   }
 
 

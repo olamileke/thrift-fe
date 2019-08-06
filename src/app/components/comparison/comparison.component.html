@@ -1,4 +1,4 @@
-
+ 
 
 <div class='row my-2'>
 	
@@ -10,11 +10,11 @@
 	</div>
 </div>
 
-<div class='row'>
+<div class='row comparison-container mb-4'>
 	
 	<div class='col-12 px-4 py-4 main'>
 
-		<form class='form-inline' [formGroup]='comparisonForm' (ngSubmit)='submit(comparisonForm)'>
+		<form class='form-inline py-2' [formGroup]='comparisonForm' (ngSubmit)='submit(comparisonForm)'>
 			<div class='mr-3'>
 				<p class='title mb-2'>Period 1</p>
 
@@ -22,55 +22,66 @@
 				
 					<div class='form-group d-flex flex-column align-items-start mr-2'>
 						<label for='from'>From</label>
-						<input formControlName='period1Start' ngx-mydatepicker [options]='myOptions' #period1Start="ngx-mydatepicker" class='form-control form-control-sm'>
-						<div class="input-group-append">
-					        <button class='bg-transparent border border-transparent' (click)="period1Start.toggleCalendar()" type="button">
-					        	<img src='assets/images/Expenses/calendar.svg' width='20px' height='20px'/>
-					        </button>
-				      	</div>
+						<div style='position:relative;'>
+							<input formControlName='period1Start' ngx-mydatepicker [options]='myOptions' #period1Start="ngx-mydatepicker" class='form-control form-control-sm'>
+							<div class="input-group-append">
+						        <button class='bg-transparent border border-transparent' (click)="period1Start.toggleCalendar()" type="button">
+						        	<img src='assets/images/Expenses/calendar.svg' width='20px' height='20px'/>
+						        </button>
+					      	</div>
+					    </div>
 					</div>
 					<div class='form-group d-flex flex-column align-items-start'>
 						<label for='to'>To</label>
-						<input formControlName='period1End' ngx-mydatepicker [options]='myOptions' #period1End='ngx-mydatepicker' class='form-control form-control-sm'>
-						<div class="input-group-append">
-					        <button class='bg-transparent border border-transparent' (click)="period1End.toggleCalendar()" type="button">
-					        	<img src='assets/images/Expenses/calendar.svg' width='20px' height='20px'/>
-					        </button>
-				      	</div>
+						<div style='position:relative;'>
+							<input formControlName='period1End' ngx-mydatepicker [options]='myOptions' #period1End='ngx-mydatepicker' class='form-control form-control-sm'>
+							<div class="input-group-append">
+						        <button class='bg-transparent border border-transparent' (click)="period1End.toggleCalendar()" type="button">
+						        	<img src='assets/images/Expenses/calendar.svg' width='20px' height='20px'/>
+						        </button>
+					      	</div>
+					    </div>
 					</div>
 				</div>
 			</div>
-			<div>
-				<p class='title mb-2'>Period 2</p>
+			<div class='mr-3 mr-xl-0'>
+				<p class='title mb-2 mt-0 mt-sm-3 mt-xl-0'>Period 2</p>
 
 				<div class="d-flex">
 				
 					<div class='form-group d-flex flex-column align-items-start mr-2'>
 						<label for='from'>From</label>
-						<input formControlName='period2Start' ngx-mydatepicker [options]='myOptions' #period2Start='ngx-mydatepicker' class='form-control form-control-sm'>
-						<div class="input-group-append">
-					        <button class='bg-transparent border border-transparent' (click)="period2Start.toggleCalendar()" type="button">
-					        	<img src='assets/images/Expenses/calendar.svg' width='20px' height='20px'/>
-					        </button>
-				      	</div>
+						<div style='position:relative;'>
+							<input formControlName='period2Start' ngx-mydatepicker [options]='myOptions' #period2Start='ngx-mydatepicker' class='form-control form-control-sm'>
+							<div class="input-group-append">
+						        <button class='bg-transparent border border-transparent' (click)="period2Start.toggleCalendar()" type="button">
+						        	<img src='assets/images/Expenses/calendar.svg' width='20px' height='20px'/>
+						        </button>
+					      	</div>
+				      </div>
 					</div>
 					<div class='form-group d-flex flex-column align-items-start'>
 						<label for='to'>To</label>
-						<input formControlName='period2End'  ngx-mydatepicker [options]='myOptions' #period2End='ngx-mydatepicker' class='form-control form-control-sm'>
-						<div class="input-group-append">
-					        <button class='bg-transparent border border-transparent' (click)="period2End.toggleCalendar()" type="button">
-					        	<img src='assets/images/Expenses/calendar.svg' width='20px' height='20px'/>
-					        </button>
-				      	</div>
+						<div style='position:relative;'>
+							<input formControlName='period2End'  ngx-mydatepicker [options]='myOptions' #period2End='ngx-mydatepicker' class='form-control form-control-sm'>
+							<div class="input-group-append">
+						        <button class='bg-transparent border border-transparent' (click)="period2End.toggleCalendar()" type="button">
+						        	<img src='assets/images/Expenses/calendar.svg' width='20px' height='20px'/>
+						        </button>
+					      	</div>
+					    </div>
 					</div>
 				</div>
 			</div>
 
-			<button type='submit' class='btn btn-danger btn-sm'>Analyze</button>
+			<div class='form-group mt-0 mt-sm-5 mt-xl-0'>
+				<button type='submit' class='btn btn-danger btn-sm'>Analyze</button>
+			</div>
 		</form>
 	</div>
 
-	<div class='col-12 px-4 pb-4 mb-4 chart-container'>
-		<canvas class='mt-3' *ngIf='fetchedData' baseChart [chartType]='chartType' [labels]='chartLabels' [datasets]='chartDataset' [colors]='chartColors' [options]='chartOptions'></canvas>
+	<div class='col-12 px-4 pb-3 chart-container' *ngIf='fetchedData'>
+		<canvas class='mt-3' baseChart [chartType]='chartType' [labels]='chartLabels' [datasets]='chartDataset' [colors]='chartColors' [options]='chartOptions'></canvas>
 	</div>
+	<p class='small pl-4 ml-4 text-muted' style='font-family:"Raleway", sans-serif;' *ngIf='fetchedData'>*Graphs are optimized for viewing on Tablets and Computers</p>
 </div>

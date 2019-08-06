@@ -45,6 +45,11 @@ form
 	border-radius:0 .2rem .2rem 0;
 }
 
+.input-group-append button
+{
+	cursor:pointer;
+}
+
 thead
 {
 	background:url('../../../assets/Images/AuthHome/backdrop.png');

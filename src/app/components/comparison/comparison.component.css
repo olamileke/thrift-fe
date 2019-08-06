@@ -12,19 +12,12 @@
 	font-size:0.7em;
 }
 
-.main
+.comparison-container
 {
 	border:1px solid rgba(0,0,0,0.1);
-	border-bottom-color:transparent;
 	background:#fff;
 }
 
-.chart-container
-{
-	border:1px solid rgba(0,0,0,0.1);
-	border-top-color:transparent;
-	background:#fff;
-}
 
 .title
 {
@@ -38,16 +31,15 @@
 
 .input-group-append
 {
-	margin-top:1px;
 	position:absolute;
-	top:20px;
+	top:0;
 	left:calc(100% - 33px);
 	border-radius:0 .2rem .2rem 0;
-	cursor:pointer;
 }
 
 .input-group-append button
 {
+	cursor:pointer;
 	padding-bottom:4px;
 }
 

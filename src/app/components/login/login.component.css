@@ -139,6 +139,7 @@ input
 	border:1px solid rgba(0,0,0,0.2);
 	padding:7px 0;
 	padding-left:13px;
+	outline:none;
 	font-size:0.8em;
 	font-family:'Raleway', sans-serif;
 }

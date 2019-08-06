@@ -1,8 +1,9 @@
 <nav class='navbar navbar-expand-lg py-3 px-0 px-lg-5 navbar-light'>
-	<a routerLink='/dashboard' (click)="emitToggleTab('dashboard')" class='navbar-brand ml-3 ml-lg-0 mr-auto'>Thrift</a>
+	<a routerLink='/dashboard' (click)="emitToggleTab('dashboard', true)" class='navbar-brand ml-3 ml-lg-0 mr-auto'>Thrift</a>
 
+	<img src="assets/images/AuthHome/search.svg" width='26px' height='26px' class='d-block d-lg-none mt-1 mr-2' (click)='toggleSearch()'>
 	<div class='d-block d-lg-none mr-2' (click)='toggleNavbar()'>
-		<img src="http://localhost/Images/Users/leke.JPG" class='mr-2' width='39px' height='39px'>	
+		<img src="{{ imgSrc }}" class='mr-2' width='39px' height='39px'>	
 		<i class='fas fa-caret-down' style='position:relative;top:3px;'></i>
 	</div>
 
@@ -15,7 +16,7 @@
 			<li class='nav-item dropdown py-2'>
 				<a [ngClass]="{'nav-link':'1==1','dropdown-toggle':'1==1','active':tabs.spending}" role='button' data-toggle='dropdown'>View Spending</a>
 
-				<div class='dropdown-menu text-center'>
+				<div class='dropdown-menu text-center m-0 p-0'>
 					<a class='dropdown-item text-muted' routerLink='/dailyExpenses' (click)="emitToggleTab('dailyExpenses')">Daily Expenses</a>
 					<a class='dropdown-item' routerLink='/monthlyExpenses' (click)="emitToggleTab('monthlyExpenses')">Monthly Expenses</a>
 				</div>
@@ -23,7 +24,7 @@
 			<li class='nav-item dropdown py-2'>
 				<a [ngClass]="{'nav-link':'1==1','dropdown-toggle':'1==1','active':tabs.analysis}" role='button' data-toggle='dropdown'>Analysis</a>
 
-				<div class='dropdown-menu text-center'>
+				<div class='dropdown-menu text-center m-0 p-0'>
 					<a class='dropdown-item text-muted' routerLink='/singlePeriod' (click)="emitToggleTab('singlePeriod')">Single Period</a>
 					<a class='dropdown-item' routerLink='/comparison' (click)="emitToggleTab('comparison')">Comparison</a>
 				</div>
@@ -40,14 +41,15 @@
 			<li class='nav-item py-2'>
 				<a class='nav-link' (click)='emitPictureChange()'>Change Picture</a>
 			</li>
-			<li class='nav-item py-2'>
+			<li class='nav-item py-2 mb-2'>
 				<a class='nav-link' (click)='logout()'>Logout</a>
 			</li>
-			<li class='nav-item px-3 py-2'> 
-				<input type="" name="" class='form-control form-control-sm mr-2' (input)='setSearchTerm($event.target.value)' #searchInput>
-				<img src="assets/images/AuthHome/search.svg" width='16px' height='16px' class='search-icon' (click)='emitSearch()'>
-			</li>
 		</ul>
+	</div>
+
+	<div class='responsive-search-container d-block d-lg-none d-flex align-items-center justify-content-center' *ngIf='displaySearch'>
+		<input type="" name="" class='form-control form-control-sm' (input)='setSearchTerm($event.target.value)' #searchInput>
+		<img src="assets/images/AuthHome/search.svg" width='16px' height='16px' class='search-icon' (click)='emitSearch()'>
 	</div>
 
 	<div class='search-info-container d-flex align-items-center' *ngIf='!breakpoint'>
@@ -55,7 +57,7 @@
 		<img src="assets/images/AuthHome/search.svg" width='16px' height='16px' class='search-icon' (click)='emitSearch()'>
 
 		<div class='user-details d-flex align-items-center'>
-			<img src="http://localhost/Images/Users/leke.JPG" class='mr-1' width='38px' height='38px'>
+			<img src="{{ imgSrc }}" class='mr-1' width='38px' height='38px'>
 			<p class='m-0 name text-muted' (click)='toggleOptions()'>{{ getName() }}</p>
 			<i class='fas fa-caret-down'></i>
 

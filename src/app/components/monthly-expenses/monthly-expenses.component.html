@@ -6,7 +6,7 @@
 	</div>
 </div>
 
-<div class='row'>
+<div class='row mb-4'>
 	
 	<div class='col-12 px-4 py-4 main'>
 		
@@ -28,7 +28,7 @@
 			</select>
 
 			<select formControlName='year' class='custom-select mb-3 mb-sm-0 mr-0 mr-sm-3'>
-				<option>2019</option>
+				<option *ngFor='let year of years' [selected]='getSelectedYear(year)'>{{ year }}</option>
 			</select>
 			<button type='submit' class='btn btn-danger btn-sm'>Fetch</button>
 		</form>
@@ -48,7 +48,7 @@
 			<p class='m-0 mb-1'>{{ getSavingsStatement() }}</p>
 			<p>Current Income of N {{ monthIncome.final_amount | number }}</p>
 
-			{{ getPurchaseDetails() }}
+			{{ getPurchaseDetails() }}l
 		</div>
 
 		<table class='table table-borderless mt-3 py-' *ngIf='purchases.length > 0'>
@@ -60,7 +60,7 @@
 			<tbody>
 				<tr *ngFor='let purchase of purchases'>
 					<td>{{ purchase.name }}</td>
-					<td>{{ purchase.amount }}</td>
+					<td class=''>{{ purchase.amount }}</td>
 					<td>{{ purchase.time }}</td>
 				</tr>
 			</tbody>

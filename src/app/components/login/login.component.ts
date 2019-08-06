@@ -105,7 +105,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
       if(this.loginForm.get('email').invalid) {
 
-          this.notification.showErrorMsg('Please enter a valid email address');
+          this.notification.showErrorMsg('Enter a valid email address');
       }
       else {
 

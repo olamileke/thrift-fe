@@ -88,10 +88,6 @@ input
 	font-size:0.8em;
 }
 
-input:focus
-{
-	border:1px solid #6C757D;
-}
 
 .login-text
 {

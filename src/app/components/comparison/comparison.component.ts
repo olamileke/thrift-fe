@@ -36,7 +36,8 @@ export class ComparisonComponent implements OnInit {
   				}]
   fetchedData:boolean=false;
 
-  constructor(private fb:FormBuilder, private notification:NotificationService, private expenses:ExpensesService) { }
+  constructor(private fb:FormBuilder, private notification:NotificationService, 
+              private expenses:ExpensesService) { }
 
   ngOnInit() {
 
@@ -130,14 +131,14 @@ export class ComparisonComponent implements OnInit {
 
   		this.expenses.comparison(period1, period2).subscribe((res:any) => {
 
-  			this.fetchedData=true;
-  			this.chartLabels=this.getLabels(res.data.period1[0], res.data.period2[0]);
+  		this.fetchedData=true;
+		this.chartLabels=this.getLabels(res.data.period1[0], res.data.period2[0]);
 
-  			let dataset1={data:res.data.period1[1], label:`${period1.start} - ${period1.end}`, borderWidth:2, pointBorderWidth:2};
-  			let dataset2={data:res.data.period2[1], label:`${period2.start} - ${period2.end}`, borderWidth:2, pointBorderWidth:2};
-  			this.chartDataset=[];
-  			this.chartDataset.push(dataset1);
-  			this.chartDataset.push(dataset2);
+		let dataset1={data:res.data.period1[1], label:`${period1.start} - ${period1.end}`, borderWidth:2, pointBorderWidth:2};
+		let dataset2={data:res.data.period2[1], label:`${period2.start} - ${period2.end}`, borderWidth:2, pointBorderWidth:2};
+		this.chartDataset=[];
+		this.chartDataset.push(dataset1);
+		this.chartDataset.push(dataset2);
   		})
   	}
   }

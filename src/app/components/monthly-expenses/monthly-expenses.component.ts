@@ -16,6 +16,8 @@ export class MonthlyExpensesComponent implements OnInit {
   monthIncome:any;
   savings:any;
   fetchedData:boolean=false;
+  years=[];
+  currentYear:number;
 
   constructor(private fb:FormBuilder, private expenses:ExpensesService) { }
 
@@ -26,6 +28,9 @@ export class MonthlyExpensesComponent implements OnInit {
   		month:[this.getCurrentMonth(), [Validators.required]],
         year:['2019', [Validators.required]]
   	});
+
+
+    this.getYears();
   }
 
 
@@ -47,9 +52,20 @@ export class MonthlyExpensesComponent implements OnInit {
          this.purchases=res.purchases;
          this.monthIncome=res.monthIncome;
          this.savings=res.savings;
-
-         console.log(res);
      });
+  }
+
+
+  getYears() {
+
+      let date=new Date();
+      this.currentYear=date.getFullYear();
+      let year=date.getFullYear();
+
+      for(let i=2019; i <= year; i++) {
+
+          this.years.push(i);
+      }
   }
 
 
@@ -110,6 +126,20 @@ export class MonthlyExpensesComponent implements OnInit {
       }
 
       return `Savings Target of N ${this.savings.amount} not achieved`;
+  }
+
+
+
+  // determining the default year to be selected in the form
+
+  getSelectedYear(year:number):boolean {
+
+      if(this.currentYear == year) {
+
+          return true;
+      }
+
+      return false;
   }
 
 }

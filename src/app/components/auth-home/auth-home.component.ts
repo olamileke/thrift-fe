@@ -9,6 +9,7 @@ import { DashboardService } from '../../services/dashboard.service';
 import { NotificationService } from '../../services/notification.service';
 
 import { DashboardComponent } from '../dashboard/dashboard.component';
+import { HeaderComponent } from '../header/header.component';
 import { UpdateMonthlyDataComponent } from '../update-monthly-data/update-monthly-data.component';
 
 @Component({
@@ -32,6 +33,7 @@ export class AuthHomeComponent implements OnInit {
   incomeData:any={};
 
   @ViewChild(DashboardComponent) dashboard:DashboardComponent;
+  @ViewChild( HeaderComponent ) header:HeaderComponent;
   @ViewChild(UpdateMonthlyDataComponent) updateData:UpdateMonthlyDataComponent;
 
   constructor(private loader:LoaderService, private router:Router,
@@ -192,7 +194,8 @@ export class AuthHomeComponent implements OnInit {
 
 
   // checking if the user already has an expense item recorded for the particular item and 
-  // incrementing it instead of creating a new record 
+  // incrementing it instead of creating a new record in the current details object in the 
+  // dashboard service
 
   hasBeenRecorded(values:any):boolean {
 
@@ -200,8 +203,8 @@ export class AuthHomeComponent implements OnInit {
 
           if(this.dash.currentDetails['data'].purchases[i].name == values.name) {
 
-              this.dash.currentDetails['data'].purchases[i].amount=this.dash.currentDetails['data'].purchases[i].amount + values.amount;
-              this.dash.currentDetails['data'].purchases[i].time_created=this.getTime();
+              this.dash.currentDetails['data'].purchases[i].amount+= values.amount;
+              this.dash.currentDetails['data'].purchases[i].time=this.getTime();
               return true;
               break;
           }
@@ -275,8 +278,15 @@ export class AuthHomeComponent implements OnInit {
   }
 
 
-  togglePictureChangeDialog(param:boolean) {
+  togglePictureChangeDialog(param:boolean, data=null) {
 
   	this.uploadImage=param;
+
+    // setting the displayed profile picture to be the newly uploaded image
+
+    if(data != null) {
+
+      this.header.imgSrc=data;
+    }
   }
 }

@@ -19,7 +19,7 @@ export class ErrorInterceptor implements HttpInterceptor {
 
 	handleError(error:any) {
 
-		console.log(error);
+		console.log(error.error);
 
 		if(error.error.url == 'api/signup') {
 

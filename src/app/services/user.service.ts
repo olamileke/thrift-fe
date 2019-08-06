@@ -41,6 +41,12 @@ export class UserService {
   }
 
 
+  uploadImage(formData:FormData) {
+
+    return this.http.post(environment.url+`image/upload`, formData);
+  }
+
+
   get httpOptions() {
 
      const options={headers:new HttpHeaders({'Content-Type':'application/json'})};

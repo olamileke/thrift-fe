@@ -26,23 +26,23 @@ export class ErrorInterceptor implements HttpInterceptor {
 			this.notification.showErrorMsg('User already exists for the specified email!');
 		} 
 
-		if(error.error.url == 'api/login') {
+		else if(error.error.url == 'api/login') {
 
 			this.notification.showErrorMsg('Incorrect username or password');
 		}
 
-		if(error.error.url == 'api/account/activate') {
+		else if(error.error.url == 'api/account/activate') {
 
 			this.notification.showErrorMsg('Invalid activation token');
 		}
 
-		if(error.error.url == 'api/sendpasswordresetmail') {
+		else if(error.error.url == 'api/sendpasswordresetmail') {
 
 			this.notification.showErrorMsg('User does not exist for the specified email');
 		}
 
 
-		if(error.error.url == 'api/password/reset/verifytoken') {
+		else if(error.error.url == 'api/password/reset/verifytoken') {
 
 			if(error.error.error == 'Invalid Token') {
 
@@ -55,6 +55,11 @@ export class ErrorInterceptor implements HttpInterceptor {
 			}
 
 			this.router.navigate(['/login']);	
+		}
+
+		else {
+
+			this.notification.showErrorMsg('An error occured');
 		}
 
 		return of(error);

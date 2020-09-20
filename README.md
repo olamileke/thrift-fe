@@ -1,27 +1,66 @@
-# ThriftFe
+### Thrift-fe
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.0.
+------------
 
-## Development server
+A personal finance application to keep track of  spending.  Generate charts  of weekly and monthly spending, download spending reports in excel file format and view graphical summaries of spending. 
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Front end written in Angular. The backend is written in Lumen with php and can be found [here](https://github.com/olamileke/thrift-be.git "here").
 
-## Code scaffolding
+I likely will not take this live because I am a much better developer since I built this and it can be improved upon. I will probably rewrite it in Next js.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
+[![](https://s3-us-east-2.amazonaws.com/thescreenshotsbucket/thrift/Screenshot_2019-07-24%20thrift.png)](https://s3-us-east-2.amazonaws.com/thescreenshotsbucket/thrift/Screenshot_2019-07-24%20thrift.png)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+[![](https://s3-us-east-2.amazonaws.com/thescreenshotsbucket/thrift/Screenshot_2019-07-24-thrift-signup.png)](https://s3-us-east-2.amazonaws.com/thescreenshotsbucket/thrift/Screenshot_2019-07-24-thrift-signup.png)
 
-## Running unit tests
+[![](https://s3-us-east-2.amazonaws.com/thescreenshotsbucket/thrift/Screenshot_2019-07-24%20thrift-login.png)](https://s3-us-east-2.amazonaws.com/thescreenshotsbucket/thrift/Screenshot_2019-07-24%20thrift-login.png)
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+[![](https://s3-us-east-2.amazonaws.com/thescreenshotsbucket/thrift/Screenshot_2019-07-24%20thrift-dashboard.png)](https://s3-us-east-2.amazonaws.com/thescreenshotsbucket/thrift/Screenshot_2019-07-24%20thrift-dashboard.png)
 
-## Running end-to-end tests
+[![](https://s3-us-east-2.amazonaws.com/thescreenshotsbucket/thrift/Screenshot_2019-07-24%20thrift-week-analysis.png)](https://s3-us-east-2.amazonaws.com/thescreenshotsbucket/thrift/Screenshot_2019-07-24%20thrift-week-analysis.png)
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
-## Further help
+------------
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+To run this application locally, you must have node installed. Get that [here](https://nodejs.org "here"). You also need to have the Angular CLI installed. To do this, open up your terminal and run
+
+```
+npm install -g @angular/cli
+```
+
+This will install the latest version of the Angular CLI which will enable you to run Angular applications.
+
+Next up, navigate into the directory of your choice on your system and clone this repository by running
+
+```
+git clone https://github.com/olamileke/thrift-fe.git
+```
+
+When cloning is complete, navigate into the application directory by running
+
+```
+cd thrift-fe
+```
+
+At this point, we need to install all the packages needed by the app to run. Do this by running
+
+```
+npm install
+```
+
+This will install all the packages defined in the package.json file in the application root.
+
+Navigate to the src/environments directory and set the url option in the environment.ts file to whatever url the cloned backend is running on.
+
+Still in the terminal, run
+
+```
+ng serve
+```
+When the application is done compiling, access it at localhost:4200. Alternatively, you can specify the port you want the app to run at by adding a  port parameter like
+
+```
+ng serve --port 5000
+```
+Here the app will be available at localhost:5000.

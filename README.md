@@ -4,9 +4,9 @@
 
 A personal finance application to keep track of  spending.  Generate charts  of weekly and monthly spending, download spending reports in excel file format and view graphical summaries of spending. 
 
-Front end written in Angular. The backend is written in Lumen with php and can be found [here](https://github.com/olamileke/thrift-be.git "here").
+Front end written in Angular. The backend is written in php with the Lumen microframework and can be found [here](https://github.com/olamileke/thrift-be.git "here").
 
-I likely will not take this live because I am a much better developer since I built this and it can be improved upon. I will probably rewrite it in Next js.
+I intend to rewrite this app in Next js because a lot can be improved upon.
 
 
 [![](https://s3-us-east-2.amazonaws.com/thescreenshotsbucket/thrift/Screenshot_2019-07-24%20thrift.png)](https://s3-us-east-2.amazonaws.com/thescreenshotsbucket/thrift/Screenshot_2019-07-24%20thrift.png)
